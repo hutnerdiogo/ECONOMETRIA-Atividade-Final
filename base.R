@@ -43,19 +43,8 @@ a <- get_close_values_from_papers("VALE3.SA")
 Quandl.api_key('bjYYiH17NsT4PGCNr8G9')
 ipca <- Quandl('BCB/433', collapse = "daily", start_date = "1996-01-01")
 dollar <- get_close_values_from_papers("BRL=X",from="2015-01-01")
-tail(dollar)
-plot(dollar)
-plot(ipca, type = "b")
-abline(h=0.04, col="red")
-head(dollar)
-#### Testes ####
-PAPERS <- c("BBDC4.SA","BBAS3.SA","BBDC3.SA","ITUB4.SA","SANB11.SA")
-retorno_papes <- make_portfolio_return(PAPERS)
-dollar <- zoo(indice_to_variation(dollar),order.by = index(dollar))
-selic <- 
-retorno_com_dollar <- merge.zoo(retorno_papes,b)
-colnames(retorno_com_dollar) <- c("retorno","dollar")
-teste <- lm(retorno ~ dollar, data=retorno_com_dollar)
-summary(teste)
-plot(retorno_com_dollar$retorno,log(retorno_com_dollar$dollar))
-abline(teste)
+ibov <- get_close_values_from_papers("%5EBVSP")
+# IBOV <- Yahoo
+# Selic <- BACEN pode ter no Quandl
+# Dummy politicas para cada governo
+# Dummy Covid
