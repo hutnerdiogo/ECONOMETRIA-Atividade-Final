@@ -12,6 +12,7 @@ library("zoo")
 ##### Codigos #####
 
 #### Funcoes de inicializacoes -> Parte das acoes ####
+
 get_close_values_from_papers <- function(PAPER){
   df_intc <- getSymbols(PAPER,src='yahoo',auto.assign=FALSE)
   only_close <- df_intc[,4]
@@ -19,16 +20,15 @@ get_close_values_from_papers <- function(PAPER){
   return(only_close)
 }
 
-#### Funcoes de inicializacoes -> Parte da utilitarios ####
-
-### Parte das acoes ###
-
-### Parte dos indices ###
-Quandl.api_key('bjYYiH17NsT4PGCNr8G9')
-ipca <- Quandl('BCB/433', collapse = "daily", start_date = "1996-01-01")
-dollar <- get_close_values_from_papers("BRL=X")
 ibov <- get_close_values_from_papers("%5EBVSP")
-# IBOV <- Yahoo
-# Selic <- BACEN pode ter no Quandl
-# Dummy politicas para cada governo
-# Dummy Covid
+load("Dados/desemprego - 1980 a 2001.Rdata")
+load("Dados/desemprego - 2002 a 2022.Rdata")
+load("Dados/EconoDados.Rdata")
+load("Dados/FedFunds.Rdata")
+load("Dados/gap.Rdata")
+load("Dados/IPCA.Rdata")
+load("Dados/selic.Rdata")
+desemprego <- rbind(desemprego1,desemprego2)
+IPCA
+baseDados <-cbind(ibov,data,desemprego,)
+rm(nomesFedFunds)
