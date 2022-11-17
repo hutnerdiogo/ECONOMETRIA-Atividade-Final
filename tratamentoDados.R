@@ -106,7 +106,7 @@ for (registro in selic[,1]){
   datas_corrigidas_selic <- c(datas_corrigidas_selic, as.character(convert_to_date_desemprego2(registro)))
 }
 selic <- as.matrix(selic[,2])
-rownames(selic) <- datas_corrigidas_selic
+rownames(selic) <- c("1974-01-01",datas_corrigidas_selic[-1])
 save(selic,file="Dados/selic.Rdata")
 
 #### GAP ####
