@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6c7019fd-d2cb-4b8e-95db-910e32f9348b" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/Dados/selic.Rdata" beforeDir="false" afterPath="$PROJECT_DIR$/Dados/selic.Rdata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base.R" beforeDir="false" afterPath="$PROJECT_DIR$/base.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tratamentoDados.R" beforeDir="false" afterPath="$PROJECT_DIR$/tratamentoDados.R" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="R Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GZw7FE6cYRC8ZP8EHSKokK1xUU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/diogo/OneDrive/Documents/Codigos/R/Trabalhos metodos/Trabalho Final&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\diogo\OneDrive\Documents\Codigos\R\Trabalhos metodos\Trabalho Final\Dados" />
+      <recent name="C:\Users\diogo\OneDrive\Documents\Codigos\R\Trabalhos metodos\Trabalho Final" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="R" type="R">
+      <r-file-path value="C:\Program Files\R\R-4.2.1\bin\R.exe" />
+      <working-directory value="C:\Users\diogo\OneDrive\Documents\Codigos\R\Trabalhos metodos\Trabalho Final" />
+      <interpreter-arguments value="" />
+      <script-arguments value="" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c7019fd-d2cb-4b8e-95db-910e32f9348b" name="Changes" comment="" />
+      <created>1666609244910</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666609244910</updated>
+      <workItem from="1666609248163" duration="3297000" />
+      <workItem from="1666631728396" duration="62000" />
+      <workItem from="1666632390681" duration="2566000" />
+      <workItem from="1666648172836" duration="473000" />
+      <workItem from="1666725482426" duration="311000" />
+      <workItem from="1666981167510" duration="113000" />
+      <workItem from="1666981996540" duration="701000" />
+      <workItem from="1667076247972" duration="619000" />
+      <workItem from="1667479163555" duration="725000" />
+      <workItem from="1668513929884" duration="222000" />
+      <workItem from="1668546466700" duration="13000" />
+      <workItem from="1668546677722" duration="37000" />
+      <workItem from="1668691576889" duration="14826000" />
+      <workItem from="1668717970532" duration="496000" />
+    </task>
+    <task id="LOCAL-00001" summary=".">
+      <created>1668715133050</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668715133050</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+</project>

@@ -49,4 +49,4 @@ colnames(selic) <- "Selic"
 
 baseDados <- cbind.zoo(data, desemprego, FedFunds, gap, ibov, IPCA, selic)
 
-baseDados["2022-08-19",]
+baseDados[index(baseDados) == "2022-08-19",]
