@@ -1,5 +1,6 @@
 library(tidyverse)
 library(lubridate)
+library(zoo)
 
 #### IPCA ####
 IPCA <- read.table("Dados/brutos/IPCA Mensal desde 94 CSV.csv",sep=';',dec=".")
@@ -135,3 +136,14 @@ data[,1] <- as.numeric(str_replace(str_replace(data[,1],'\\.',''),'\\.',''))
 data[,2] <- as.numeric(str_replace(str_replace(data[,2],'\\.',''),'\\.',''))
 data[,3] <- as.numeric(str_replace(str_replace(data[,3],'\\.',''),'\\.',''))
 save(data, file= "Dados/EconoDados.Rdata")
+
+
+#### IGPM ####
+
+igpm <- read.table(file="Dados/brutos/IGPM.csv",sep=";",dec=',')
+index_igpm <- as.character(as.Date(paste(str_replace(igpm[,"V1"],'\\.','/'),"/01",sep=''),"%Y/%m/%d"))
+igpm <- igpm[,-1]
+igpm <- as.matrix(igpm)
+rownames(igpm) <- index_igpm
+igpm <- igpm / 10000
+save(igpm, file="Dados/IGPM.Rdata")
