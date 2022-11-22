@@ -160,6 +160,28 @@ regfwbw <- lm(IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_
 summary(regfwbw)
 
 ## Misturar os dois
-variaveis <- c("")
 regfwbw2 <- lm(IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_fisica_industrial_dif,data=baseLimpa)
 summary(regfwbw2)
+
+regGapMensal <- reg
+summary(regGapMensal)
+
+plot(regGapMensal)
+ps_hat <- hatvalues(regGapMensal)
+plot(ps_hat)
+abline(h=c(1,3)*mean(ps_hat), col=2)
+id <- which(ps_hat>3 * mean(ps_hat))
+text(id, ps_hat[id], index(baseLimpa)[id], pos=1, xpd=TRUE)
+
+## BP teste
+bptest(regGapMensal)
+
+## Teste de Goldfeld e Quandt
+gqtest(regGapMensal)
+
+acf(na.omit(regGapMensal$residuals), plot = T)
+
+
+#todo: teste de robustez, terminar testes de outliers, Aplicar para o futuro, Dummys de governo
+## Reconstruindo a base de dados para GAP não mensal
+baseDadosMensal <- baseDados
