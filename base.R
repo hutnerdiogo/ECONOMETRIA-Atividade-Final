@@ -126,6 +126,7 @@ n <- length(variaveis_possiveis)
 l <- rep(list(0:1), n)
 todas_regressoes <- expand.grid(l)
 colnames(todas_regressoes) <- variaveis_possiveis
+todas_regressoes <- todas_regressoes[-1,]
 vetor_R2_Adj <- c()
 for (regre in 1:dim(todas_regressoes)[1]){
   variaveis <- variaveis_possiveis[as.logical(as.vector(as.matrix(todas_regressoes[regre,])))]
@@ -134,10 +135,10 @@ for (regre in 1:dim(todas_regressoes)[1]){
   R2 <- summary(reg)$adj.r.squared
   vetor_R2_Adj <- c(vetor_R2_Adj, R2)
 }
-
+#todo: analisar concentração de R2
 
 todas_regressoes <- cbind(todas_regressoes, vetor_R2_Adj)
-todas_regressoes
+
 plot(todas_regressoes[,"vetor_R2_Adj"])
 abline(h=0,col="red")
 
@@ -162,26 +163,140 @@ summary(regfwbw)
 ## Misturar os dois
 regfwbw2 <- lm(IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_fisica_industrial_dif,data=baseLimpa)
 summary(regfwbw2)
+#Não gostei, o primeiro vai ser o modelo
 
 regGapMensal <- reg
 summary(regGapMensal)
 
+anova(regGapMensal)
+
+#Testando modelo restrito só com variaveis singificativas
+ModeloIrrestrito <- lm(IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_fisica_industrial_dif +
+    jurosEUA_log + RMM,data=na.omit(baseLimpa))
+modeloRestrito <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif,data=na.omit(baseLimpa))
+summary(modeloRestrito)
+summary(ModeloIrrestrito)
+
+anova(modeloRestrito,ModeloIrrestrito)
+
+anova(model0TodosAgregados)
+
+# Ou seja, modelo Restrito foi melhor, ele passará a ser o nosso novo modelo
+# E rodando um anova para a primeira regressão, com todas as variaveis, dava igualmente o resultado, ou seja, tudo
+# foi "atoa"
+modeloRestritoSemAlfa <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 1 ,data=na.omit(baseLimpa))
+summary(modeloRestritoSemAlfa)
+anova(modeloRestrito,modeloRestritoSemAlfa)
+
+regGapMensal <- modeloRestritoSemAlfa
+summary(regGapMensal)
+# Teste reset - Erros normalizados com media 0
+reset(regGapMensal)
+
+# Resumindo, se p valor < 5 = hipotese alternativa, se p valor > 5 = Hipotese Nula
+
+# >3 problema
+vif(regGapMensal)
+
+
+# Graficos a serem analisados
+par(mfrow=c(2,2))
 plot(regGapMensal)
+par(mfrow=c(1,1))
+
+# Elementos da diagonal de H:
 ps_hat <- hatvalues(regGapMensal)
 plot(ps_hat)
 abline(h=c(1,3)*mean(ps_hat), col=2)
 id <- which(ps_hat>3 * mean(ps_hat))
 text(id, ps_hat[id], index(baseLimpa)[id], pos=1, xpd=TRUE)
 
-## BP teste
+# Residuos studentizados:
+ps_resst <- rstandard(regGapMensal)
+
+#Testes de diagnóstico:
+summary(influence.measures(regGapMensal))
+
+#### Teste de Normalidade ####
+#teste de Jarque-Bera:
+install.packages("fBasics")
+library(fBasics)
+e <- resid(regGapMensal)
+jarqueberaTest(e)
+
+#### HETEROCEDASTICIDADE E CORRELAÇÃO SERIAL ####
+## Teste de Breusch-Pagan:
 bptest(regGapMensal)
 
-## Teste de Goldfeld e Quandt
-gqtest(regGapMensal)
+## Teste de White
+#install.packages("skedastic")
+library("skedastic")
+white(regGapMensal, interactions = TRUE)
 
+#### Teste de Goldfeld e Quandt
+gqtest(regGapMensal, data=baseLimpa)
+
+## Erros padrão de White
+# Primeiro, os erros padrão originais:
+vcov(regGapMensal)
+
+# Matriz de covariância de White:
+vcovHC(regGapMensal)
+
+#Ver correlacao serial
 acf(na.omit(regGapMensal$residuals), plot = T)
 
+## Dummys Governo
+indexBase <- index(baseLimpa)
+length(indexBase)
+dummys <- matrix(0,nrow = length(indexBase))
+rownames(dummys) <- indexBase
+dummys <- cbind(dummys,0)
+colnames(dummys) <- c("Governo_Esquerda","Governo_Direita")
+dummys[rownames(dummys) > as.Date("2002-02-01") & rownames(dummys) < as.Date("2016-08-31"),"Governo_Esquerda"] <- 1
+dummys[rownames(dummys) > as.Date("2016-08-31"),"Governo_Direita"] <- 1
+dummys <- zoo(dummys,order.by = rownames(dummys))
+baseLimpaGoverno <- cbind(baseLimpa,dummys)
+modeloGoverno <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + Governo_Esquerda + Governo_Direita - 1
+  ,data=na.omit(baseLimpaGoverno))
+summary(modeloGoverno)
 
-#todo: teste de robustez, terminar testes de outliers, Aplicar para o futuro, Dummys de governo
+## Dummy pandemia
+indexBase <- index(baseLimpa)
+dummys <- matrix(0,nrow = length(indexBase))
+rownames(dummys) <- indexBase
+colnames(dummys) <- c("Pandemia")
+dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2022-01-01"),"Pandemia"] <- 1
+dummys <- zoo(dummys,order.by = rownames(dummys))
+baseLimpaPandemia <- cbind(baseLimpa,dummys)
+modeloPandemia <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + Pandemia - 1
+  ,data=na.omit(baseLimpaPandemia))
+summary(modeloPandemia)
+
+## Robustez
+
+results <- matrix(,
+  nrow = 10000,
+  ncol = length(names(regGapMensal$coefficients)))
+name_coeficientes <- names(regGapMensal$coefficients)
+
+colnames(results) <- name_coeficientes
+for (i in 1:10000) {
+  index_amostras <- sample(1:60,size= 40, F)
+  amostra <- baseLimpa[index_amostras,]
+  mod <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 1, data = amostra)
+  results[i,] <- mod$coefficients
+}
+par(mfrow = c(2,1),
+    mar = c(2, 2, 2, 2))
+
+name <- name_coeficientes[1]
+Hist <- hist(results[, name], plot = F, breaks = 100)
+plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
+
+name <- name_coeficientes[2]
+Hist <- hist(results[, name], plot = F, breaks = 100)
+plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
+#todo: Aplicar para o futuro
 ## Reconstruindo a base de dados para GAP não mensal
 baseDadosMensal <- baseDados
