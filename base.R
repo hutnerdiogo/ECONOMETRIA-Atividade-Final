@@ -12,6 +12,7 @@ library('tidyverse')
 library("zoo")
 library("fBasics")
 library("lmvar")
+library(stargazer)
 ##### Codigos #####
 
 #### Funcoes de inicializacoes -> Parte das acoes ####
@@ -119,6 +120,16 @@ colnames(baseLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","
                          "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem","gap")
 
 cor_table <- cor(na.omit(baseLimpa))
+
+#Plotando o ibov e analisando ele:
+vetor <- as.vector(baseDadosMensalFillLimpa[,'IBOV_dif'])
+indexa <- index(baseDadosMensalFillLimpa[,'IBOV_dif'])
+plot(as.Date(indexa),vetor,type="b")
+par(mfrow=c(1,1))
+abline(h=0,col="red")
+abline(h=mean(na.omit(vetor)),col="black")
+
+
 
 model0TodosAgregados <- lm(IBOV_dif ~ .,data=baseLimpa)
 summary(model0TodosAgregados)
@@ -261,19 +272,38 @@ dummys <- zoo(dummys,order.by = rownames(dummys))
 baseLimpaGoverno <- cbind(baseLimpa,dummys)
 modeloGoverno <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + Governo_Esquerda + Governo_Direita - 1
   ,data=na.omit(baseLimpaGoverno))
-summary(modeloGoverno)
+stargazer(model0TodosAgregados,regGapMensal,modeloOutliers,type="text")
 
 ## Dummy pandemia
 indexBase <- index(baseLimpa)
 dummys <- matrix(0,nrow = length(indexBase))
 rownames(dummys) <- indexBase
 colnames(dummys) <- c("Pandemia")
-dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2022-01-01"),"Pandemia"] <- 1
+dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2021-01-01"),"Pandemia"] <- 1
 dummys <- zoo(dummys,order.by = rownames(dummys))
 baseLimpaPandemia <- cbind(baseLimpa,dummys)
 modeloPandemia <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + Pandemia - 1
   ,data=na.omit(baseLimpaPandemia))
 summary(modeloPandemia)
+
+## Tratando Outliers:
+indexBase <- index(baseLimpa)
+dummys <- matrix(0,nrow = length(indexBase))
+rownames(dummys) <- indexBase
+dummys <- cbind(dummys,0)
+colnames(dummys) <- c("2020-06-01","2008-12-01")
+# Criterio: 2 ou mais sinalizações no testes de diagnosticos
+dummys[rownames(dummys) == as.Date("2020-06-01"),"2020-06-01"] <- 1
+dummys[rownames(dummys) == as.Date("2008-12-01"),"2008-12-01"] <- 1
+dummys <- zoo(dummys,order.by = rownames(dummys))
+baseLimpaOutliers <- cbind(baseLimpa,dummys)
+baseLimpaOutliers <- na.omit(baseLimpaOutliers)
+modeloOutliers <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + baseLimpaOutliers[,"2020-06-01"]
+  + baseLimpaOutliers[,"2008-12-01"] - 1 ,data=baseLimpaOutliers)
+summary(modeloOutliers)
+
+output <- capture.output(stargazer(model0TodosAgregados,regGapMensal,modeloOutliers,out="output.file"))
+cat(paste(output, collapse = "\n"), "\n", file="output.file", append=TRUE)
 
 ## Robustez
 
@@ -352,6 +382,6 @@ colnames(baseDadosMensalFillLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_d
 corFill <- cor(na.omit(baseDadosMensalFill))
 modelFillTodos <- lm(IBOV_dif ~ .,data=baseDadosMensalFillLimpa)
 summary(modelFillTodos)
+anova(modelFillTodos)
 cor(na.omit(baseDadosMensalFillLimpa))
-baseDados[1:10,"gap"]
 baseDadosMensalFillLimpa[1:10,"gap"]
