@@ -62,7 +62,7 @@ baseDados <- baseDados[index(baseDados) > as.Date("2001-12-01") & index(baseDado
 save(baseDados, file = "Dados/final.Rdata")
 load("Dados/final.Rdata")
 #### Calculando
-
+##### Gap Trimestral #####
 primeiradiferencalog <- function(column){
   index_analisado <- index(column)
   analisado <- as_tibble(column)
@@ -333,6 +333,8 @@ Hist <- hist(results[, name], plot = F, breaks = 100)
 plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
 #todo: Aplicar para o futuro
 
+
+##### Gap Mensal #####
 ## Reconstruindo a base de dados para GAP não mensal
 baseDadosMensalFill <- baseDados
 baseDadosMensalFill <- na.locf(baseDadosMensalFill)
@@ -394,6 +396,177 @@ modelMensalSimplesSemAlfa <- lm(IBOV_dif ~ commoditi_dif + RMM - 1 ,data=baseDad
 summary(modelMensalSimplesSemAlfa)
 
 fileConn<-file("stargazer2.html")
-writeLines(capture.output(stargazer(modelMensalSimples,modelMensalSimplesSemAlfa,type="html",title="Comparando Modelo com e sem Alfa gap mensal")), fileConn)
+star <- capture.output(stargazer(modelMensalSimples,modelMensalSimplesSemAlfa,type="html",title="Comparando Modelo com e sem Alfa gap mensal"))
+writeLines(star, fileConn)
 close(fileConn)
 
+summary(modelMensalSimples)
+
+# Teste reset - Erros normalizados com media 0
+reset(modelMensalSimples)
+
+# Resumindo, se p valor < 5 = hipotese alternativa, se p valor > 5 = Hipotese Nula
+
+# >3 problema
+vif(modelMensalSimples)
+
+
+# Graficos a serem analisados
+par(mfrow=c(2,2))
+plot(modelMensalSimples)
+par(mfrow=c(1,1))
+
+# Elementos da diagonal de H:
+ps_hat <- hatvalues(modelMensalSimples)
+plot(ps_hat)
+abline(h=c(1,3)*mean(ps_hat), col=2)
+id <- which(ps_hat>3 * mean(ps_hat))
+text(id, ps_hat[id], index(baseDadosMensalFillLimpa)[id], pos=1, xpd=TRUE)
+
+# Residuos studentizados:
+ps_resst <- rstandard(modelMensalSimples)
+
+#Testes de diagnóstico:
+summary(influence.measures(modelMensalSimples))
+
+#### Teste de Normalidade ####
+#teste de Jarque-Bera:
+e <- resid(modelMensalSimples)
+jarqueberaTest(e)
+
+#### HETEROCEDASTICIDADE E CORRELAÇÃO SERIAL ####
+## Teste de Breusch-Pagan:
+bptest(modelMensalSimples)
+
+## Teste de White
+#install.packages("skedastic")
+white(modelMensalSimples, interactions = TRUE)
+
+#### Teste de Goldfeld e Quandt
+gqtest(modelMensalSimples, data=baseDadosMensalFillLimpa)
+
+## Erros padrão de White
+# Primeiro, os erros padrão originais:
+vcov(modelMensalSimples)
+
+# Matriz de covariância de White:
+vcovHC(modelMensalSimples)
+
+#Ver correlacao serial
+acf(na.omit(modelMensalSimples$residuals), plot = T)
+
+#Dummys:
+#Governos
+indexBase <- index(baseDadosMensalFillLimpa)
+length(indexBase)
+dummys <- matrix(0,nrow = length(indexBase),ncol=2)
+rownames(dummys) <- indexBase
+colnames(dummys) <- c("Governo_Esquerda","Governo_Direita")
+dummys[rownames(dummys) > as.Date("2002-02-01") & rownames(dummys) < as.Date("2016-08-31"),"Governo_Esquerda"] <- 1
+dummys[rownames(dummys) > as.Date("2016-08-31"),"Governo_Direita"] <- 1
+dummys <- zoo(dummys,order.by = rownames(dummys))
+baseLimpaGoverno <- cbind(baseDadosMensalFillLimpa,dummys)
+modeloGovernoGap <- lm(IBOV_dif ~ commoditi_dif + RMM + Governo_Esquerda + Governo_Direita - 1
+  ,data=na.omit(baseLimpaGoverno))
+summary(modeloGovernoGap)
+coef(modeloGovernoGap)
+## Dummy pandemia
+indexBase <- index(baseDadosMensalFillLimpa)
+dummys <- matrix(0,nrow = length(indexBase))
+rownames(dummys) <- indexBase
+colnames(dummys) <- c("Pandemia")
+dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2020-06-01"),"Pandemia"] <- 1
+dummys <- zoo(dummys,order.by = rownames(dummys))
+baseLimpaPandemia <- cbind(baseDadosMensalFillLimpa,dummys)
+modeloPandemia <- lm(IBOV_dif ~ commoditi_dif + RMM + Pandemia
+  ,data=na.omit(baseLimpaPandemia))
+summary(modeloPandemia)
+coef(modeloPandemia)
+
+## tratando outliers:
+indexBase <- index(baseDadosMensalFillLimpa)
+outliers <- c("2002-09-01","2002-10-01","2007-11-01","2007-12-01","2008-01-01","2008-08-01",
+              "2008-09-01","2008-11-01","2008-12-01")
+dummys <- matrix(0,nrow=length(indexBase),ncol=length(outliers))
+colnames(dummys) <- outliers
+rownames(dummys) <- indexBase
+for (i in outliers){
+  dummys[rownames(dummys) == i,i] <- 1
+}
+baseMensalFillSemOutliers <- cbind(baseDadosMensalFillLimpa,dummys)
+paste(outliers,collapse = ' + ')
+modeloSemOutliers <- lm(IBOV_dif ~ commoditi_dif + RMM + baseMensalFillSemOutliers[,"2002-09-01"] +
+  baseMensalFillSemOutliers[,"2002-10-01"] + baseMensalFillSemOutliers[,"2007-11-01"] +
+  baseMensalFillSemOutliers[,"2007-12-01"] + baseMensalFillSemOutliers[,"2008-01-01"] +
+  baseMensalFillSemOutliers[,"2008-08-01"] + baseMensalFillSemOutliers[,"2008-09-01"] +
+  baseMensalFillSemOutliers[,"2008-11-01"] + baseMensalFillSemOutliers[,"2008-12-01"] ,data=baseMensalFillSemOutliers)
+summary(modeloSemOutliers)
+
+fileConn<-file("stargazer3.html")
+star <- capture.output(stargazer(modelFillTodos,modelMensalSimples,modeloSemOutliers, type="html",column.labels = c("Modelo Completo",
+                                                                                             "Modelo Simples",
+                                                                                             "Modelo Simples Sem Outliers")))
+writeLines(star, fileConn)
+close(fileConn)
+
+##### Gap Mensal linearizadO #####
+
+baseDadosMensalAprox <- baseDados
+baseDadosMensalAprox <- baseDadosMensalAprox[c(-1,-2),]
+gap <- baseDadosMensalAprox[,'gap']
+index_gap <- index(baseDadosMensalAprox[,'gap'])
+gap <- na.approx(coredata(gap))
+gap <- zoo(gap,order.by = index_gap)
+baseDadosMensalAprox$gap <- gap
+
+#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);
+ibov_dif <- zoo(primeiradiferencalog(baseDadosMensalAprox[,"ibov"]))
+
+#ibovespa de ontem
+ibov_ontem <- ibov_dif
+ibov_ontem_index <- index(ibov_ontem)
+ibov_ontem <- as_tibble(ibov_ontem)
+ibov_ontem <- ibov_ontem%>%dplyr::mutate(growth_lag1 = dplyr::lag(ibov_ontem))
+ibov_ontem <- zoo(ibov_ontem[,2],order.by = ibov_ontem_index)
+
+#a primeira diferença do logaritmo dos preços das Commodities (COM);
+commoditi_dif <- zoo(primeiradiferencalog(baseDadosMensalAprox[,5]))
+colnames(baseDadosMensalAprox)[5]
+
+#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego - PME/ IBGE-19(DES);
+desemprego_dif <- zoo(primeiradiferencalog(baseDadosMensalAprox[,"desemprego"]))
+
+#a primeira diferença do logaritmo do IGP (IGP);
+igp_dif <- zoo(primeiradiferencalog(baseDadosMensalAprox[,'1.IGPM']))
+
+#a primeira diferença do logaritmo do agregado monetário M1(M1)
+M1.1 <- zoo(primeiradiferencalog(baseDadosMensalAprox[,1]))
+M1.2 <- zoo(primeiradiferencalog(baseDadosMensalAprox[,2]))
+M1.3 <- zoo(primeiradiferencalog(baseDadosMensalAprox[,3]))
+colnames(baseDadosMensalAprox)[c(1,2,3)]
+
+#a primeira diferença do logaritmo da produção física industrial dessazonalizada
+producao_dif <- zoo(primeiradiferencalog(baseDadosMensalAprox[,4]))
+
+# o logaritmo da taxa de juros dos EUA (EUA).
+juros_log <- log(baseDadosMensalAprox[,'FedFunds'])
+
+#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);
+RMM <- baseDadosMensalAprox[,'FedFunds'] - rollmean(baseDadosMensalAprox[,'FedFunds'],12)
+# GAP
+gap <- baseDadosMensalAprox[,'gap']
+
+baseDadosMensalAproxLimpa <- merge.zoo(ibov_dif,commoditi_dif,desemprego_dif,igp_dif, M1.1, M1.2, M1.3, producao_dif, juros_log,RMM,ibov_ontem,gap)
+
+colnames(baseDadosMensalAproxLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","Agreg_Monetario1","Agreg_Monetario2","Agreg_Monetario3",
+                         "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem","gap")
+
+cor(na.omit(baseDadosMensalAproxLimpa))
+
+modelMensalAprox <- lm(IBOV_dif ~ ., data= baseDadosMensalAproxLimpa)
+
+summary(modelMensalAprox)
+
+anova(modelMensalAprox)
+
+#### Modelo Semestral ####
