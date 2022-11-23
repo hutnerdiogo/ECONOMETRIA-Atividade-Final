@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+* text=auto
+Dados/brutos/*.htlm linguist-detectable=false
+Dados/brutos/Ipeadata_files/*.axd linguist-detectable=false
+*.tex linguist-detectable=false
+*.rmd linguist-detectable=false
+*.html linguist-detectable=false
+Dados/brutos/Ipeadata_files/*.css linguist-detectable=false
