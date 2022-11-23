@@ -110,17 +110,19 @@ juros_log <- log(baseDadosTrimestral[,'FedFunds'])
 
 #o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);
 RMM <- baseDadosTrimestral[,'FedFunds'] - rollmean(baseDadosTrimestral[,'FedFunds'],12)
+# GAP
+gap <- baseDadosTrimestral[,'gap']
 
-baseLimpa <- merge.zoo(ibov_dif,commoditi_dif,desemprego_dif,igp_dif, M1.1, M1.2, M1.3, producao_dif, juros_log,RMM,ibov_ontem)
+baseLimpa <- merge.zoo(ibov_dif,commoditi_dif,desemprego_dif,igp_dif, M1.1, M1.2, M1.3, producao_dif, juros_log,RMM,ibov_ontem,gap)
 
 colnames(baseLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","Agreg_Monetario1","Agreg_Monetario2","Agreg_Monetario3",
-                         "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem")
+                         "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem","gap")
 
-cor(na.omit(baseLimpa))
+cor_table <- cor(na.omit(baseLimpa))
 
 model0TodosAgregados <- lm(IBOV_dif ~ .,data=baseLimpa)
 summary(model0TodosAgregados)
-
+anova(model0TodosAgregados)
 variaveis_possiveis <- colnames(baseLimpa)[-1]
 n <- length(variaveis_possiveis)
 l <- rep(list(0:1), n)
@@ -136,6 +138,7 @@ for (regre in 1:dim(todas_regressoes)[1]){
   vetor_R2_Adj <- c(vetor_R2_Adj, R2)
 }
 #todo: analisar concentração de R2
+max(vetor_R2_Adj)
 
 todas_regressoes <- cbind(todas_regressoes, vetor_R2_Adj)
 
@@ -143,9 +146,8 @@ plot(todas_regressoes[,"vetor_R2_Adj"])
 abline(h=0,col="red")
 
 ## Melhor regressão modelo maximizando R2 ajustado
-which.max(todas_regressoes[,"vetor_R2_Adj"])
-todas_regressoes[462,]
-variaveis <- variaveis_possiveis[as.logical(as.vector(as.matrix(todas_regressoes[462,])))]
+melhor <- todas_regressoes[which.max(todas_regressoes[,"vetor_R2_Adj"]),]
+variaveis <- variaveis_possiveis[as.logical(as.vector(as.matrix(melhor)))]
 variaveis <- variaveis[-7]
 frm <- as.formula(paste("IBOV_dif","~", paste(variaveis,collapse = " + ")  ,sep=""))
 reg <- lm(frm, data=baseLimpa)
@@ -298,5 +300,58 @@ name <- name_coeficientes[2]
 Hist <- hist(results[, name], plot = F, breaks = 100)
 plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
 #todo: Aplicar para o futuro
+
 ## Reconstruindo a base de dados para GAP não mensal
-baseDadosMensal <- baseDados
+baseDadosMensalFill <- baseDados
+baseDadosMensalFill <- na.locf(baseDadosMensalFill)
+baseDadosMensalFill <- na.omit(baseDadosMensalFill)
+
+#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);
+ibov_dif <- zoo(primeiradiferencalog(baseDadosMensalFill[,"ibov"]))
+
+#ibovespa de ontem
+ibov_ontem <- ibov_dif
+ibov_ontem_index <- index(ibov_ontem)
+ibov_ontem <- as_tibble(ibov_ontem)
+ibov_ontem <- ibov_ontem%>%dplyr::mutate(growth_lag1 = dplyr::lag(ibov_ontem))
+ibov_ontem <- zoo(ibov_ontem[,2],order.by = ibov_ontem_index)
+
+#a primeira diferença do logaritmo dos preços das Commodities (COM);
+commoditi_dif <- zoo(primeiradiferencalog(baseDadosMensalFill[,5]))
+colnames(baseDadosMensalFill)[5]
+
+#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego - PME/ IBGE-19(DES);
+desemprego_dif <- zoo(primeiradiferencalog(baseDadosMensalFill[,"desemprego"]))
+
+#a primeira diferença do logaritmo do IGP (IGP);
+igp_dif <- zoo(primeiradiferencalog(baseDadosMensalFill[,'1.IGPM']))
+
+#a primeira diferença do logaritmo do agregado monetário M1(M1)
+M1.1 <- zoo(primeiradiferencalog(baseDadosMensalFill[,1]))
+M1.2 <- zoo(primeiradiferencalog(baseDadosMensalFill[,2]))
+M1.3 <- zoo(primeiradiferencalog(baseDadosMensalFill[,3]))
+colnames(baseDadosMensalFill)[c(1,2,3)]
+
+#a primeira diferença do logaritmo da produção física industrial dessazonalizada
+producao_dif <- zoo(primeiradiferencalog(baseDadosMensalFill[,4]))
+
+# o logaritmo da taxa de juros dos EUA (EUA).
+juros_log <- log(baseDadosMensalFill[,'FedFunds'])
+
+#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);
+RMM <- baseDadosMensalFill[,'FedFunds'] - rollmean(baseDadosMensalFill[,'FedFunds'],12)
+
+#gap
+gap <- baseDadosMensalFill[,'gap']
+
+baseDadosMensalFillLimpa <- merge.zoo(ibov_dif,commoditi_dif,desemprego_dif,igp_dif, M1.1, M1.2, M1.3, producao_dif, juros_log,RMM,ibov_ontem,gap)
+
+colnames(baseDadosMensalFillLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","Agreg_Monetario1","Agreg_Monetario2","Agreg_Monetario3",
+                                        "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem","gap")
+
+corFill <- cor(na.omit(baseDadosMensalFill))
+modelFillTodos <- lm(IBOV_dif ~ .,data=baseDadosMensalFillLimpa)
+summary(modelFillTodos)
+cor(na.omit(baseDadosMensalFillLimpa))
+baseDados[1:10,"gap"]
+baseDadosMensalFillLimpa[1:10,"gap"]
