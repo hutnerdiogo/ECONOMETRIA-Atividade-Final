@@ -302,8 +302,10 @@ modeloOutliers <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_di
   + baseLimpaOutliers[,"2008-12-01"] - 1 ,data=baseLimpaOutliers)
 summary(modeloOutliers)
 
-output <- capture.output(stargazer(model0TodosAgregados,regGapMensal,modeloOutliers,out="output.file"))
-cat(paste(output, collapse = "\n"), "\n", file="output.file", append=TRUE)
+output <- capture.output(stargazer(model0TodosAgregados,regGapMensal,modeloOutliers,type="html",
+                                   column.labels = c("Modelo Geral","Modelo Restrito","Modelo Restrito Sem Outliers"),
+                                   title = "GAP Trimestral"))
+cat(output, file="output.html", append=TRUE)
 
 ## Robustez
 
@@ -384,4 +386,14 @@ modelFillTodos <- lm(IBOV_dif ~ .,data=baseDadosMensalFillLimpa)
 summary(modelFillTodos)
 anova(modelFillTodos)
 cor(na.omit(baseDadosMensalFillLimpa))
-baseDadosMensalFillLimpa[1:10,"gap"]
+
+modelMensalSimples <- lm(IBOV_dif ~ commoditi_dif + RMM ,data=baseDadosMensalFillLimpa)
+summary(modelMensalSimples)
+
+modelMensalSimplesSemAlfa <- lm(IBOV_dif ~ commoditi_dif + RMM - 1 ,data=baseDadosMensalFillLimpa)
+summary(modelMensalSimplesSemAlfa)
+
+fileConn<-file("stargazer2.html")
+writeLines(capture.output(stargazer(modelMensalSimples,modelMensalSimplesSemAlfa,type="html",title="Comparando Modelo com e sem Alfa gap mensal")), fileConn)
+close(fileConn)
+
