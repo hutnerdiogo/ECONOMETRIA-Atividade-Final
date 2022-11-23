@@ -13,6 +13,7 @@ library("zoo")
 library("fBasics")
 library("lmvar")
 library(stargazer)
+library(lubridate)
 ##### Codigos #####
 
 #### Funcoes de inicializacoes -> Parte das acoes ####
@@ -570,3 +571,145 @@ summary(modelMensalAprox)
 anova(modelMensalAprox)
 
 #### Modelo Semestral ####
+baseSemestral <- baseDados
+baseSemestral <- baseSemestral[month(index(baseSemestral)) %in% c(12,6)]
+
+#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);
+ibov_dif <- zoo(primeiradiferencalog(baseSemestral[,"ibov"]))
+
+#ibovespa de ontem
+ibov_ontem <- ibov_dif
+ibov_ontem_index <- index(ibov_ontem)
+ibov_ontem <- as_tibble(ibov_ontem)
+ibov_ontem <- ibov_ontem%>%dplyr::mutate(growth_lag1 = dplyr::lag(ibov_ontem))
+ibov_ontem <- zoo(ibov_ontem[,2],order.by = ibov_ontem_index)
+
+#a primeira diferença do logaritmo dos preços das Commodities (COM);
+commoditi_dif <- zoo(primeiradiferencalog(baseSemestral[,5]))
+colnames(baseSemestral)[5]
+
+#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego - PME/ IBGE-19(DES);
+desemprego_dif <- zoo(primeiradiferencalog(baseSemestral[,"desemprego"]))
+
+#a primeira diferença do logaritmo do IGP (IGP);
+igp_dif <- zoo(primeiradiferencalog(baseSemestral[,'1.IGPM']))
+
+#a primeira diferença do logaritmo do agregado monetário M1(M1)
+M1.1 <- zoo(primeiradiferencalog(baseSemestral[,1]))
+M1.2 <- zoo(primeiradiferencalog(baseSemestral[,2]))
+M1.3 <- zoo(primeiradiferencalog(baseSemestral[,3]))
+colnames(baseSemestral)[c(1,2,3)]
+
+#a primeira diferença do logaritmo da produção física industrial dessazonalizada
+producao_dif <- zoo(primeiradiferencalog(baseSemestral[,4]))
+
+# o logaritmo da taxa de juros dos EUA (EUA).
+juros_log <- log(baseSemestral[,'FedFunds'])
+
+#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);
+RMM <- baseSemestral[,'FedFunds'] - rollmean(baseSemestral[,'FedFunds'],12)
+# GAP
+gap <- baseSemestral[,'gap']
+
+baseSemestralLimpa <- merge.zoo(ibov_dif,commoditi_dif,desemprego_dif,igp_dif, M1.1, M1.2, M1.3, producao_dif, juros_log,RMM,ibov_ontem,gap)
+
+colnames(baseSemestralLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","Agreg_Monetario1","Agreg_Monetario2","Agreg_Monetario3",
+                         "producao_fisica_industrial_dif","jurosEUA_log","RMM","ibov_ontem","gap")
+
+cor(na.omit(baseSemestralLimpa))
+
+modelSemestral0 <- lm(IBOV_dif ~ ., data= baseSemestralLimpa)
+
+summary(modelSemestral0)
+
+anova(modelSemestral0)
+
+modelSemestral <- lm(IBOV_dif ~ igp_dif + Agreg_Monetario1 + Agreg_Monetario2 + producao_fisica_industrial_dif + ibov_ontem,
+                     data=baseSemestralLimpa)
+
+summary(modelSemestral)
+
+modelSemestral2 <- lm(IBOV_dif ~ desemprego_dif + producao_fisica_industrial_dif + jurosEUA_log + ibov_ontem,
+                     data=baseSemestralLimpa)
+
+summary(modelSemestral2)
+
+modelSemestral0SemAlfa <- lm(IBOV_dif ~ . -1, data= baseSemestralLimpa)
+
+summary(modelSemestral0SemAlfa)
+
+fileConn<-file("stargazer4.html")
+star <- capture.output(stargazer(modelSemestral0,modelSemestral0SemAlfa,modelSemestral,modelSemestral2,type="html",title="Comparando Modelos Semestrais",
+                                 column.labels = c("Modelo 0","Modelo 0 Sem Alfa","Modelo pelo Anova","Modelo Var. Significativas")))
+writeLines(star, fileConn)
+close(fileConn)
+modelSemestral <- modelSemestral0SemAlfa
+
+# Teste reset - Erros normalizados com media 0
+reset(modelSemestral)
+
+# Resumindo, se p valor < 5 = hipotese alternativa, se p valor > 5 = Hipotese Nula
+
+# >3 problema
+vif(modelSemestral)
+
+modelSemestralSemInflacaoDeVariavel <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario3 +
+                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
+summary(modelSemestralSemInflacaoDeVariavel)
+vif(modelSemestralSemInflacaoDeVariavel)
+
+modelSemestralSemInflacaoDeVariavel2 <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario2 +
+                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
+summary(modelSemestralSemInflacaoDeVariavel2)
+
+modelSemestralSemInflacaoDeVariavel3 <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario1 +
+                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
+summary(modelSemestralSemInflacaoDeVariavel3)
+
+
+
+
+# Graficos a serem analisados
+par(mfrow=c(2,2))
+plot(modelSemestral)
+par(mfrow=c(1,1))
+
+# Elementos da diagonal de H:
+ps_hat <- hatvalues(modelSemestral)
+plot(ps_hat)
+abline(h=c(1,3)*mean(ps_hat), col=2)
+id <- which(ps_hat>3 * mean(ps_hat))
+text(id, ps_hat[id], index(baseSemestralLimpa)[id], pos=1, xpd=TRUE)
+
+# Residuos studentizados:
+ps_resst <- rstandard(modelSemestral)
+
+#Testes de diagnóstico:
+summary(influence.measures(modelSemestral))
+
+#### Teste de Normalidade ####
+#teste de Jarque-Bera:
+e <- resid(modelSemestral)
+jarqueberaTest(e)
+
+#### HETEROCEDASTICIDADE E CORRELAÇÃO SERIAL ####
+## Teste de Breusch-Pagan:
+bptest(modelSemestral)
+
+## Teste de White
+#install.packages("skedastic")
+white(modelSemestral, interactions = TRUE)
+
+#### Teste de Goldfeld e Quandt
+gqtest(modelSemestral, data=baseSemestralLimpa)
+
+## Erros padrão de White
+# Primeiro, os erros padrão originais:
+vcov(modelSemestral)
+
+# Matriz de covariância de White:
+vcovHC(modelSemestral)
+
+#Ver correlacao serial
+acf(na.omit(modelSemestral$residuals), plot = T)
+
