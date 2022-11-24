@@ -14,6 +14,7 @@ library("fBasics")
 library("lmvar")
 library(stargazer)
 library(lubridate)
+library("skedastic")
 ##### Codigos #####
 
 #### Funcoes de inicializacoes -> Parte das acoes ####
@@ -390,16 +391,18 @@ summary(modelFillTodos)
 anova(modelFillTodos)
 cor(na.omit(baseDadosMensalFillLimpa))
 
-modelMensalSimples <- lm(IBOV_dif ~ commoditi_dif + RMM ,data=baseDadosMensalFillLimpa)
+modelMensalSimples <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1,data=baseDadosMensalFillLimpa)
 summary(modelMensalSimples)
 
-modelMensalSimplesSemAlfa <- lm(IBOV_dif ~ commoditi_dif + RMM - 1 ,data=baseDadosMensalFillLimpa)
+modelMensalSimplesSemAlfa <- lm(IBOV_dif ~ Agreg_Monetario1 + commoditi_dif + RMM  - 1 ,data=baseDadosMensalFillLimpa)
 summary(modelMensalSimplesSemAlfa)
 
 fileConn<-file("stargazer2.html")
 star <- capture.output(stargazer(modelMensalSimples,modelMensalSimplesSemAlfa,type="html",title="Comparando Modelo com e sem Alfa gap mensal"))
 writeLines(star, fileConn)
 close(fileConn)
+
+modelMensalSimples <- modelMensalSimplesSemAlfa
 
 summary(modelMensalSimples)
 
@@ -441,6 +444,7 @@ bptest(modelMensalSimples)
 
 ## Teste de White
 #install.packages("skedastic")
+
 white(modelMensalSimples, interactions = TRUE)
 
 #### Teste de Goldfeld e Quandt
@@ -467,7 +471,7 @@ dummys[rownames(dummys) > as.Date("2002-02-01") & rownames(dummys) < as.Date("20
 dummys[rownames(dummys) > as.Date("2016-08-31"),"Governo_Direita"] <- 1
 dummys <- zoo(dummys,order.by = rownames(dummys))
 baseLimpaGoverno <- cbind(baseDadosMensalFillLimpa,dummys)
-modeloGovernoGap <- lm(IBOV_dif ~ commoditi_dif + RMM + Governo_Esquerda + Governo_Direita - 1
+modeloGovernoGap <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 1 + Governo_Esquerda + Governo_Direita - 1
   ,data=na.omit(baseLimpaGoverno))
 summary(modeloGovernoGap)
 coef(modeloGovernoGap)
@@ -479,7 +483,7 @@ colnames(dummys) <- c("Pandemia")
 dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2020-06-01"),"Pandemia"] <- 1
 dummys <- zoo(dummys,order.by = rownames(dummys))
 baseLimpaPandemia <- cbind(baseDadosMensalFillLimpa,dummys)
-modeloPandemia <- lm(IBOV_dif ~ commoditi_dif + RMM + Pandemia
+modeloPandemia <- lm(IBOV_dif ~ commoditi_dif + RMM + Pandemia + Agreg_Monetario1 - 1
   ,data=na.omit(baseLimpaPandemia))
 summary(modeloPandemia)
 coef(modeloPandemia)
@@ -496,7 +500,7 @@ for (i in outliers){
 }
 baseMensalFillSemOutliers <- cbind(baseDadosMensalFillLimpa,dummys)
 paste(outliers,collapse = ' + ')
-modeloSemOutliers <- lm(IBOV_dif ~ commoditi_dif + RMM + baseMensalFillSemOutliers[,"2002-09-01"] +
+modeloSemOutliers <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 1 + baseMensalFillSemOutliers[,"2002-09-01"] +
   baseMensalFillSemOutliers[,"2002-10-01"] + baseMensalFillSemOutliers[,"2007-11-01"] +
   baseMensalFillSemOutliers[,"2007-12-01"] + baseMensalFillSemOutliers[,"2008-01-01"] +
   baseMensalFillSemOutliers[,"2008-08-01"] + baseMensalFillSemOutliers[,"2008-09-01"] +
@@ -665,8 +669,6 @@ summary(modelSemestralSemInflacaoDeVariavel2)
 modelSemestralSemInflacaoDeVariavel3 <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario1 +
                                           producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
 summary(modelSemestralSemInflacaoDeVariavel3)
-
-
 
 
 # Graficos a serem analisados
