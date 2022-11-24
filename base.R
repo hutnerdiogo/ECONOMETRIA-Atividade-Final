@@ -260,6 +260,8 @@ vcovHC(regGapMensal)
 
 #Ver correlacao serial
 acf(na.omit(regGapMensal$residuals), plot = T)
+#Teste de Durbin-Watson
+dwtest(regGapMensal)
 
 ## Dummys Governo
 indexBase <- index(baseLimpa)
@@ -309,33 +311,9 @@ output <- capture.output(stargazer(model0TodosAgregados,regGapMensal,modeloOutli
                                    title = "GAP Trimestral"))
 cat(output, file="output.html", append=TRUE)
 
-## Robustez
-
-results <- matrix(,
-  nrow = 10000,
-  ncol = length(names(regGapMensal$coefficients)))
-name_coeficientes <- names(regGapMensal$coefficients)
-
-colnames(results) <- name_coeficientes
-for (i in 1:10000) {
-  index_amostras <- sample(1:60,size= 40, F)
-  amostra <- baseLimpa[index_amostras,]
-  mod <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 1, data = amostra)
-  results[i,] <- mod$coefficients
-}
-par(mfrow = c(2,1),
-    mar = c(2, 2, 2, 2))
-
-name <- name_coeficientes[1]
-Hist <- hist(results[, name], plot = F, breaks = 100)
-plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
-
-name <- name_coeficientes[2]
-Hist <- hist(results[, name], plot = F, breaks = 100)
-plot(Hist, main = name, xlab = "", col = ifelse(Hist$breaks <= quantile(results[, name], 0.025), "red", ifelse(Hist$breaks >= quantile(results[, name], 0.975), "red", "white")))
-#todo: Aplicar para o futuro
-
-
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
 ##### Gap Mensal #####
 ## Reconstruindo a base de dados para GAP não mensal
 baseDadosMensalFill <- baseDados
@@ -459,7 +437,8 @@ vcovHC(modelMensalSimples)
 
 #Ver correlacao serial
 acf(na.omit(modelMensalSimples$residuals), plot = T)
-
+#Teste de Durbin-Watson
+dwtest(modelMensalSimples)
 #Dummys:
 #Governos
 indexBase <- index(baseDadosMensalFillLimpa)
@@ -513,6 +492,10 @@ star <- capture.output(stargazer(modelFillTodos,modelMensalSimples,modeloSemOutl
                                                                                              "Modelo Simples Sem Outliers")))
 writeLines(star, fileConn)
 close(fileConn)
+
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
 
 ##### Gap Mensal linearizadO #####
 
@@ -574,6 +557,9 @@ summary(modelMensalAprox)
 
 anova(modelMensalAprox)
 
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
 #### Modelo Semestral ####
 baseSemestral <- baseDados
 baseSemestral <- baseSemestral[month(index(baseSemestral)) %in% c(12,6)]
@@ -651,26 +637,16 @@ modelSemestral <- modelSemestral0SemAlfa
 
 # Teste reset - Erros normalizados com media 0
 reset(modelSemestral)
-
 # Resumindo, se p valor < 5 = hipotese alternativa, se p valor > 5 = Hipotese Nula
 
-# >3 problema
+modelSemestral <- modelSemestralSemInflacaoDeVariavel
 vif(modelSemestral)
+anova(modelSemestral)
 
-modelSemestralSemInflacaoDeVariavel <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario3 +
-                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
-summary(modelSemestralSemInflacaoDeVariavel)
-vif(modelSemestralSemInflacaoDeVariavel)
-
-modelSemestralSemInflacaoDeVariavel2 <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario2 +
-                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
-summary(modelSemestralSemInflacaoDeVariavel2)
-
-modelSemestralSemInflacaoDeVariavel3 <- lm(IBOV_dif ~ commoditi_dif + desemprego_dif + igp_dif + Agreg_Monetario1 +
-                                          producao_fisica_industrial_dif + jurosEUA_log + RMM + ibov_ontem + gap -1, data= baseSemestralLimpa)
-summary(modelSemestralSemInflacaoDeVariavel3)
-
-
+modelReduzido <- lm(IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif  -1,data=na.omit(baseSemestralLimpa))
+anova(modelSemestral,modelReduzido)
+summary(modelReduzido)
+modelSemestral <- modelReduzido
 # Graficos a serem analisados
 par(mfrow=c(2,2))
 plot(modelSemestral)
@@ -702,7 +678,7 @@ bptest(modelSemestral)
 #install.packages("skedastic")
 white(modelSemestral, interactions = TRUE)
 
-#### Teste de Goldfeld e Quandt
+## Teste de Goldfeld e Quandt
 gqtest(modelSemestral, data=baseSemestralLimpa)
 
 ## Erros padrão de White
@@ -715,3 +691,4 @@ vcovHC(modelSemestral)
 #Ver correlacao serial
 acf(na.omit(modelSemestral$residuals), plot = T)
 
+dwtest(modelSemestral)
