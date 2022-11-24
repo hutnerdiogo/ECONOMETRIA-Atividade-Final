@@ -12,10 +12,12 @@ library('tidyverse')
 library("zoo")
 library("fBasics")
 library("lmvar")
-library(stargazer)
-library(lubridate)
+library("stargazer")
+library("lubridate")
 library("skedastic")
+library("fBasics")
 ##### Codigos #####
+
 
 #### Funcoes de inicializacoes -> Parte das acoes ####
 
@@ -130,6 +132,11 @@ plot(as.Date(indexa),vetor,type="b")
 par(mfrow=c(1,1))
 abline(h=0,col="red")
 abline(h=mean(na.omit(vetor)),col="black")
+legend(x = "topright",         # Position
+       legend = c("Retorno", "Media","0"), # Legend texts
+       lty = c(6, 1 , 1),          # Line types
+       col = c("Black", "Black","Red"),          # Line colors
+       lwd = 4)
 
 
 
@@ -235,7 +242,7 @@ summary(influence.measures(regGapMensal))
 #### Teste de Normalidade ####
 #teste de Jarque-Bera:
 install.packages("fBasics")
-library(fBasics)
+
 e <- resid(regGapMensal)
 jarqueberaTest(e)
 
@@ -245,7 +252,7 @@ bptest(regGapMensal)
 
 ## Teste de White
 #install.packages("skedastic")
-library("skedastic")
+
 white(regGapMensal, interactions = TRUE)
 
 #### Teste de Goldfeld e Quandt
