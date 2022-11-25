@@ -1,0 +1,3199 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={R Notebook},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{R Notebook}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{aviso-previo}{%
+\section{Aviso Previo:}\label{aviso-previo}}
+
+Esse trabalho não apresenta analises, aqui está localizado o codigo
+usado, explicado e comentado do processo, as analises estão no docs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\# Instalando os Pacotes \#\#\#\#}
+\CommentTok{\#install.packages("AER")}
+\CommentTok{\#install.packages("Quandl")}
+\CommentTok{\#install.packages("tidyverse")}
+\CommentTok{\#install.packages("lmvar")}
+\DocumentationTok{\#\#\#\# Abrindo os pacotes \#\#\#\#}
+\FunctionTok{library}\NormalTok{(}\StringTok{"AER"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: car
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: carData
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: lmtest
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: zoo
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: sandwich
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: survival
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"Quandl"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: xts
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}TTR\textquotesingle{}}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}quantmod\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'quantmod':
+##   method            from
+##   as.zoo.data.frame zoo
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.6      v purrr   0.3.5 
+## v tibble  3.1.8      v dplyr   1.0.10
+## v tidyr   1.2.1      v stringr 1.4.1 
+## v readr   2.1.3      v forcats 0.5.2 
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::first()  masks xts::first()
+## x dplyr::lag()    masks stats::lag()
+## x dplyr::last()   masks xts::last()
+## x dplyr::recode() masks car::recode()
+## x purrr::some()   masks car::some()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"zoo"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"fBasics"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'fBasics'
+## 
+## The following object is masked from 'package:TTR':
+## 
+##     volatility
+## 
+## The following object is masked from 'package:car':
+## 
+##     densityPlot
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"lmvar"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"stargazer"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Please cite as: 
+## 
+##  Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+##  R package version 5.2.3. https://CRAN.R-project.org/package=stargazer
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"lubridate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'lubridate'
+## 
+## The following objects are masked from 'package:base':
+## 
+##     date, intersect, setdiff, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"skedastic"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"fBasics"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dados}{%
+\section{Dados}\label{dados}}
+
+Primeiro importação da base de dados localizado no diretorio, já
+preparada pelo arquivo ``tratamentoDados.R'' e dados fornecidos na pasta
+Dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{get\_close\_values\_from\_papers }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(PAPER)\{}
+\NormalTok{  df\_intc }\OtherTok{\textless{}{-}} \FunctionTok{getSymbols}\NormalTok{(PAPER,}\AttributeTok{src=}\StringTok{\textquotesingle{}yahoo\textquotesingle{}}\NormalTok{,}\AttributeTok{auto.assign=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{periodicity =} \StringTok{"monthly"}\NormalTok{,}\AttributeTok{from=}\StringTok{"2001{-}12{-}01"}\NormalTok{)}
+\NormalTok{  only\_close }\OtherTok{\textless{}{-}}\NormalTok{ df\_intc[,}\DecValTok{4}\NormalTok{]}
+  \FunctionTok{names}\NormalTok{(only\_close) }\OtherTok{\textless{}{-}} \StringTok{"Close"}
+  \FunctionTok{return}\NormalTok{(only\_close)}
+\NormalTok{\}}
+
+\NormalTok{ibov }\OtherTok{\textless{}{-}} \FunctionTok{get\_close\_values\_from\_papers}\NormalTok{(}\StringTok{"\%5EBVSP"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/desemprego {-} 1980 a 2001.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/desemprego {-} 2002 a 2022.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/EconoDados.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/FedFunds.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/gap.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/IPCA.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/selic.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/IGPM.Rdata"}\NormalTok{)}
+
+\NormalTok{desemprego }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(desemprego1,desemprego2)}
+
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(data,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(data))}
+
+\NormalTok{desemprego }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(desemprego,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(desemprego))}
+\FunctionTok{colnames}\NormalTok{(desemprego) }\OtherTok{\textless{}{-}} \StringTok{"desemprego"}
+\NormalTok{FedFunds }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(FedFunds,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(FedFunds))}
+\FunctionTok{colnames}\NormalTok{(FedFunds) }\OtherTok{\textless{}{-}} \StringTok{"FedFunds"}
+\NormalTok{gap }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(gap,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(gap))}
+\FunctionTok{colnames}\NormalTok{(gap) }\OtherTok{\textless{}{-}} \StringTok{"gap"}
+\NormalTok{ibov }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(ibov,}\AttributeTok{order.by =} \FunctionTok{as.character}\NormalTok{(}\FunctionTok{index}\NormalTok{(ibov)))}
+\FunctionTok{colnames}\NormalTok{(ibov) }\OtherTok{\textless{}{-}} \StringTok{"ibov"}
+\NormalTok{IPCA }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(IPCA,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(IPCA))}
+\FunctionTok{colnames}\NormalTok{(IPCA) }\OtherTok{\textless{}{-}} \StringTok{"IPCA"}
+\NormalTok{selic }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(selic,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(selic))}
+\FunctionTok{colnames}\NormalTok{(selic) }\OtherTok{\textless{}{-}} \StringTok{"Selic"}
+
+\NormalTok{IGPM }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(igpm,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(igpm))}
+
+\NormalTok{baseDados }\OtherTok{\textless{}{-}} \FunctionTok{cbind.zoo}\NormalTok{(data, desemprego, FedFunds, gap, ibov, IPCA, selic,IGPM)}
+
+
+\NormalTok{baseDados }\OtherTok{\textless{}{-}}\NormalTok{ baseDados[}\FunctionTok{index}\NormalTok{(baseDados) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2001{-}12{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{index}\NormalTok{(baseDados) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2022{-}01{-}01"}\NormalTok{)]}
+
+
+\FunctionTok{save}\NormalTok{(baseDados, }\AttributeTok{file =} \StringTok{"Dados/final.Rdata"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"Dados/final.Rdata"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modelo-trimestrais}{%
+\section{Modelo trimestrais}\label{modelo-trimestrais}}
+
+Nessa hora começamos o modelo trimestral, aqui é a construção dos dados,
+importando do banco montado acima
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{primeiradiferencalog }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(column)\{}
+\NormalTok{  index\_analisado }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(column)}
+\NormalTok{  analisado }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(column)}
+\NormalTok{  analisado }\OtherTok{\textless{}{-}}\NormalTok{ analisado}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth\_lag1 =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{lag}\NormalTok{(analisado))}
+  \FunctionTok{colnames}\NormalTok{(analisado) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"esse"}\NormalTok{,}\StringTok{"ultimo"}\NormalTok{)}
+\NormalTok{  saida }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(analisado[,}\StringTok{\textquotesingle{}esse\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\NormalTok{analisado[,}\StringTok{\textquotesingle{}ultimo\textquotesingle{}}\NormalTok{])}
+\NormalTok{  saida }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(saida)}
+  \FunctionTok{index}\NormalTok{(saida) }\OtherTok{\textless{}{-}}\NormalTok{ index\_analisado}
+  \FunctionTok{return}\NormalTok{(saida)}
+\NormalTok{\}}
+
+
+\NormalTok{baseDadosTrimestral }\OtherTok{\textless{}{-}}\NormalTok{ baseDados[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(baseDados[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{])]}
+
+\CommentTok{\#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);}
+\NormalTok{ibov\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\StringTok{"ibov"}\NormalTok{]))}
+
+\CommentTok{\#ibovespa de ontem}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_dif}
+\NormalTok{ibov\_ontem\_index }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_ontem}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth\_lag1 =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{lag}\NormalTok{(ibov\_ontem))}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(ibov\_ontem[,}\DecValTok{2}\NormalTok{],}\AttributeTok{order.by =}\NormalTok{ ibov\_ontem\_index)}
+
+\CommentTok{\#a primeira diferença do logaritmo dos preços das Commodities (COM);}
+\NormalTok{commoditi\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\DecValTok{5}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego {-} PME/ IBGE{-}19(DES);}
+\NormalTok{desemprego\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\StringTok{"desemprego"}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do IGP (IGP);}
+\NormalTok{igp\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\StringTok{\textquotesingle{}1.IGPM\textquotesingle{}}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do agregado monetário M1(M1)}
+\NormalTok{M1}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.2} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.3} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\DecValTok{3}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo da produção física industrial dessazonalizada}
+\NormalTok{producao\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosTrimestral[,}\DecValTok{4}\NormalTok{]))}
+
+\CommentTok{\# o logaritmo da taxa de juros dos EUA (EUA).}
+\NormalTok{juros\_log }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(baseDadosTrimestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);}
+\NormalTok{RMM }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosTrimestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{] }\SpecialCharTok{{-}} \FunctionTok{rollmean}\NormalTok{(baseDadosTrimestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{],}\DecValTok{12}\NormalTok{)}
+\CommentTok{\# GAP}
+\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosTrimestral[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{baseLimpa }\OtherTok{\textless{}{-}} \FunctionTok{merge.zoo}\NormalTok{(ibov\_dif,commoditi\_dif,desemprego\_dif,igp\_dif, M1}\FloatTok{.1}\NormalTok{, M1}\FloatTok{.2}\NormalTok{, M1}\FloatTok{.3}\NormalTok{, producao\_dif, juros\_log,RMM,ibov\_ontem,gap)}
+
+\FunctionTok{colnames}\NormalTok{(baseLimpa) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{,}\StringTok{"commoditi\_dif"}\NormalTok{,}\StringTok{"desemprego\_dif"}\NormalTok{,}\StringTok{"igp\_dif"}\NormalTok{,}\StringTok{"Agreg\_Monetario1"}\NormalTok{,}\StringTok{"Agreg\_Monetario2"}\NormalTok{,}\StringTok{"Agreg\_Monetario3"}\NormalTok{, }\StringTok{"producao\_fisica\_industrial\_dif"}\NormalTok{ ,}\StringTok{"jurosEUA\_log"}\NormalTok{ ,}\StringTok{"RMM"}\NormalTok{ ,}\StringTok{"ibov\_ontem"}\NormalTok{,}\StringTok{"gap"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+vendo a correlação entre os dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(baseLimpa))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                   IBOV_dif commoditi_dif desemprego_dif
+## IBOV_dif                        1.00000000   -0.02822844    -0.02908837
+## commoditi_dif                  -0.02822844    1.00000000    -0.10645867
+## desemprego_dif                 -0.02908837   -0.10645867     1.00000000
+## igp_dif                        -0.17336139    0.38120442    -0.04403053
+## Agreg_Monetario1                0.20035582    0.23852507    -0.76945930
+## Agreg_Monetario2                0.21231027    0.22730281    -0.50693117
+## Agreg_Monetario3                0.21233810    0.25485173    -0.74877552
+## producao_fisica_industrial_dif  0.12401614   -0.09297886     0.54767926
+## jurosEUA_log                    0.18712581   -0.11189447    -0.07569296
+## RMM                             0.11332241   -0.04328614    -0.08571523
+## ibov_ontem                     -0.01631799    0.08299742    -0.04672636
+## gap                            -0.18841094    0.01586600    -0.23602189
+##                                    igp_dif Agreg_Monetario1 Agreg_Monetario2
+## IBOV_dif                       -0.17336139      0.200355816       0.21231027
+## commoditi_dif                   0.38120442      0.238525067       0.22730281
+## desemprego_dif                 -0.04403053     -0.769459298      -0.50693117
+## igp_dif                         1.00000000      0.077376647       0.07949385
+## Agreg_Monetario1                0.07737665      1.000000000       0.61964600
+## Agreg_Monetario2                0.07949385      0.619645996       1.00000000
+## Agreg_Monetario3                0.09039208      0.966667270       0.79173314
+## producao_fisica_industrial_dif -0.06662014     -0.666899322      -0.41373579
+## jurosEUA_log                   -0.01769844     -0.002708446       0.12109814
+## RMM                            -0.00471900     -0.002490848       0.18621019
+## ibov_ontem                     -0.07402297     -0.120344742       0.14968995
+## gap                             0.09919597     -0.018038312       0.02600642
+##                                Agreg_Monetario3 producao_fisica_industrial_dif
+## IBOV_dif                             0.21233810                     0.12401614
+## commoditi_dif                        0.25485173                    -0.09297886
+## desemprego_dif                      -0.74877552                     0.54767926
+## igp_dif                              0.09039208                    -0.06662014
+## Agreg_Monetario1                     0.96666727                    -0.66689932
+## Agreg_Monetario2                     0.79173314                    -0.41373579
+## Agreg_Monetario3                     1.00000000                    -0.65422401
+## producao_fisica_industrial_dif      -0.65422401                     1.00000000
+## jurosEUA_log                         0.01791971                     0.06909537
+## RMM                                  0.05670809                     0.05253811
+## ibov_ontem                          -0.07132732                     0.06875636
+## gap                                 -0.01433561                     0.05335653
+##                                jurosEUA_log          RMM  ibov_ontem
+## IBOV_dif                        0.187125808  0.113322410 -0.01631799
+## commoditi_dif                  -0.111894469 -0.043286141  0.08299742
+## desemprego_dif                 -0.075692956 -0.085715227 -0.04672636
+## igp_dif                        -0.017698445 -0.004719000 -0.07402297
+## Agreg_Monetario1               -0.002708446 -0.002490848 -0.12034474
+## Agreg_Monetario2                0.121098136  0.186210192  0.14968995
+## Agreg_Monetario3                0.017919711  0.056708093 -0.07132732
+## producao_fisica_industrial_dif  0.069095366  0.052538108  0.06875636
+## jurosEUA_log                    1.000000000  0.471098273  0.35792052
+## RMM                             0.471098273  1.000000000  0.25393577
+## ibov_ontem                      0.357920516  0.253935765  1.00000000
+## gap                            -0.112730017  0.144696191  0.10253793
+##                                        gap
+## IBOV_dif                       -0.18841094
+## commoditi_dif                   0.01586600
+## desemprego_dif                 -0.23602189
+## igp_dif                         0.09919597
+## Agreg_Monetario1               -0.01803831
+## Agreg_Monetario2                0.02600642
+## Agreg_Monetario3               -0.01433561
+## producao_fisica_industrial_dif  0.05335653
+## jurosEUA_log                   -0.11273002
+## RMM                             0.14469619
+## ibov_ontem                      0.10253793
+## gap                             1.00000000
+\end{verbatim}
+
+Plotando o ibov com media e o 0 em destaque:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor }\OtherTok{\textless{}{-}} \FunctionTok{as.vector}\NormalTok{(baseLimpa[,}\StringTok{\textquotesingle{}IBOV\_dif\textquotesingle{}}\NormalTok{])}
+\NormalTok{indexa }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseLimpa[,}\StringTok{\textquotesingle{}IBOV\_dif\textquotesingle{}}\NormalTok{])}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(indexa),vetor,}\AttributeTok{type=}\StringTok{"b"}\NormalTok{)}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\FunctionTok{mean}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(vetor)),}\AttributeTok{col=}\StringTok{"black"}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \StringTok{"topright"}\NormalTok{,         }\CommentTok{\# Position}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Retorno"}\NormalTok{, }\StringTok{"Media"}\NormalTok{,}\StringTok{"0"}\NormalTok{), }\CommentTok{\# Legend texts}
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{ , }\DecValTok{1}\NormalTok{),          }\CommentTok{\# Line types}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"Black"}\NormalTok{, }\StringTok{"Black"}\NormalTok{,}\StringTok{"Red"}\NormalTok{),          }\CommentTok{\# Line colors}
+       \AttributeTok{lwd =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-4-1.pdf}
+Criando um modelo generalista para testar variaveis
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model0TodosAgregados }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}\AttributeTok{data=}\NormalTok{baseLimpa)}
+\FunctionTok{summary}\NormalTok{(model0TodosAgregados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ ., data = baseLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.47205 -0.03436  0.02019  0.07169  0.22404 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)                     0.025949   0.028428   0.913  0.36519   
+## commoditi_dif                  -0.110809   0.241646  -0.459  0.64829   
+## desemprego_dif                  0.234242   0.190470   1.230  0.22382   
+## igp_dif                        -1.450810   1.177287  -1.232  0.22288   
+## Agreg_Monetario1                2.287353   2.066869   1.107  0.27308   
+## Agreg_Monetario2                0.764711   0.849987   0.900  0.37208   
+## Agreg_Monetario3               -1.884723   2.848577  -0.662  0.51087   
+## producao_fisica_industrial_dif  0.636689   0.235269   2.706  0.00896 **
+## jurosEUA_log                    0.009567   0.013035   0.734  0.46596   
+## RMM                             0.017359   0.035275   0.492  0.62452   
+## ibov_ontem                     -0.065387   0.140727  -0.465  0.64396   
+## gap                            -0.475413   0.467492  -1.017  0.31348   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1229 on 57 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.2885, Adjusted R-squared:  0.1512 
+## F-statistic: 2.101 on 11 and 57 DF,  p-value: 0.03481
+\end{verbatim}
+
+Nessa hora fiz uma simulação de modelos, basicamente foi simulado todos
+os modelos possiveis (2047) e armazenando o R2 Ajustado. Peguei o modelo
+com maior para dar sequencia aos testes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variaveis\_possiveis }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(baseLimpa)[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(variaveis\_possiveis)}
+\NormalTok{l }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{1}\NormalTok{), n)}
+\NormalTok{todas\_regressoes }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(l)}
+\FunctionTok{colnames}\NormalTok{(todas\_regressoes) }\OtherTok{\textless{}{-}}\NormalTok{ variaveis\_possiveis}
+\NormalTok{todas\_regressoes }\OtherTok{\textless{}{-}}\NormalTok{ todas\_regressoes[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,]}
+\NormalTok{vetor\_R2\_Adj }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (regre }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{dim}\NormalTok{(todas\_regressoes)[}\DecValTok{1}\NormalTok{])\{}
+\NormalTok{  variaveis }\OtherTok{\textless{}{-}}\NormalTok{ variaveis\_possiveis[}\FunctionTok{as.logical}\NormalTok{(}\FunctionTok{as.vector}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(todas\_regressoes[regre,])))]}
+\NormalTok{  frm }\OtherTok{\textless{}{-}} \FunctionTok{as.formula}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{, }\StringTok{"\textasciitilde{}"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(variaveis, }\AttributeTok{collapse =} \StringTok{" + "}\NormalTok{)))}
+\NormalTok{  reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(frm, }\AttributeTok{data=}\NormalTok{baseLimpa)}
+\NormalTok{  R2 }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(reg)}\SpecialCharTok{$}\NormalTok{adj.r.squared}
+\NormalTok{  vetor\_R2\_Adj }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(vetor\_R2\_Adj, R2)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Graficos do R2 ajustado, com destaque ao valor 0
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{todas\_regressoes }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(todas\_regressoes, vetor\_R2\_Adj)}
+
+\FunctionTok{plot}\NormalTok{(todas\_regressoes[,}\StringTok{"vetor\_R2\_Adj"}\NormalTok{])}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-7-1.pdf}
+Melhor regressão modelo maximizando R2 ajustado
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Melhor regressão modelo maximizando R2 ajustado}
+\NormalTok{melhor }\OtherTok{\textless{}{-}}\NormalTok{ todas\_regressoes[}\FunctionTok{which.max}\NormalTok{(todas\_regressoes[,}\StringTok{"vetor\_R2\_Adj"}\NormalTok{]),]}
+\NormalTok{variaveis }\OtherTok{\textless{}{-}}\NormalTok{ variaveis\_possiveis[}\FunctionTok{as.logical}\NormalTok{(}\FunctionTok{as.vector}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(melhor)))]}
+\NormalTok{variaveis }\OtherTok{\textless{}{-}}\NormalTok{ variaveis[}\SpecialCharTok{{-}}\DecValTok{7}\NormalTok{]}
+\NormalTok{frm }\OtherTok{\textless{}{-}} \FunctionTok{as.formula}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{,}\StringTok{"\textasciitilde{}"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(variaveis,}\AttributeTok{collapse =} \StringTok{" + "}\NormalTok{)  ,}\AttributeTok{sep=}\StringTok{""}\NormalTok{))}
+\NormalTok{reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(frm, }\AttributeTok{data=}\NormalTok{baseLimpa)}
+\FunctionTok{summary}\NormalTok{(reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = frm, data = baseLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.42107 -0.05545  0.02770  0.07332  0.21198 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                     0.03020    0.02356   1.282  0.20460    
+## desemprego_dif                  0.30544    0.16692   1.830  0.07208 .  
+## igp_dif                        -1.76450    1.04396  -1.690  0.09601 .  
+## Agreg_Monetario1                1.13807    0.29861   3.811  0.00032 ***
+## producao_fisica_industrial_dif  0.62717    0.22353   2.806  0.00670 ** 
+## jurosEUA_log                    0.01460    0.01135   1.287  0.20302    
+## RMM                             0.01153    0.03255   0.354  0.72432    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1204 on 62 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.2573, Adjusted R-squared:  0.1854 
+## F-statistic: 3.579 on 6 and 62 DF,  p-value: 0.004138
+\end{verbatim}
+
+Nessa hora, descobri que existe um modelo chamado forward/backward
+stepping model selection, fui testar fazer com de achar um modelo otimo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Falhando com o forward / backward{-}stepping}
+\NormalTok{baseLimpafwbw }\OtherTok{\textless{}{-}} \FunctionTok{coredata}\NormalTok{(baseLimpa)}
+\NormalTok{response }\OtherTok{\textless{}{-}}\NormalTok{ baseLimpafwbw[,}\StringTok{"IBOV\_dif"}\NormalTok{]}
+\NormalTok{baseLimpafwbw }\OtherTok{\textless{}{-}}\NormalTok{ baseLimpafwbw[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(response }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\FunctionTok{as.data.frame}\NormalTok{(baseLimpafwbw), }\AttributeTok{x =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{y =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{fwbw}\NormalTok{(fit,}\AttributeTok{fun=}\NormalTok{AIC,}\AttributeTok{fw=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $object
+## 
+## Call:
+## stats::lm(formula = object$y ~ ., data = as.data.frame(as.matrix(X_mu)), 
+##     x = TRUE, y = TRUE)
+## 
+## Coefficients:
+##                    (Intercept)                  desemprego_dif  
+##                        0.03156                         0.29987  
+##                        igp_dif                Agreg_Monetario1  
+##                       -1.76188                         1.13308  
+## producao_fisica_industrial_dif                    jurosEUA_log  
+##                        0.63013                         0.01644  
+## 
+## 
+## $fun
+## [1] -89.57119
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regfwbw }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ desemprego\_dif }\SpecialCharTok{+}\NormalTok{ igp\_dif }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ jurosEUA\_log,}\AttributeTok{data=}\NormalTok{baseLimpa)}
+\FunctionTok{summary}\NormalTok{(regfwbw)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + 
+##     producao_fisica_industrial_dif + jurosEUA_log, data = baseLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.45051 -0.06204  0.03195  0.07152  0.28347 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)                     0.01831    0.02135   0.857  0.39405   
+## desemprego_dif                  0.27533    0.16840   1.635  0.10636   
+## igp_dif                        -0.38270    0.64960  -0.589  0.55759   
+## Agreg_Monetario1                0.79775    0.26817   2.975  0.00397 **
+## producao_fisica_industrial_dif  0.27061    0.21315   1.270  0.20826   
+## jurosEUA_log                    0.01116    0.01026   1.088  0.28011   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1327 on 73 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.1269, Adjusted R-squared:  0.06714 
+## F-statistic: 2.123 on 5 and 73 DF,  p-value: 0.07219
+\end{verbatim}
+
+Na hora que rodei com as variaveis que ele ensinuou, o modelo foi pior
+ao que eu tinha, por isso foi discartado.
+
+Tentei por hora até misturar os dois para ver se conseguia algo melhor,
+não consegui.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Misturar os dois}
+\NormalTok{regfwbw2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ desemprego\_dif }\SpecialCharTok{+}\NormalTok{ igp\_dif }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif,}\AttributeTok{data=}\NormalTok{baseLimpa)}
+\FunctionTok{summary}\NormalTok{(regfwbw2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + 
+##     producao_fisica_industrial_dif, data = baseLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.44606 -0.05464  0.01916  0.06795  0.27123 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)                     0.01183    0.02053   0.576  0.56627   
+## desemprego_dif                  0.26555    0.16837   1.577  0.11902   
+## igp_dif                        -0.45281    0.64720  -0.700  0.48634   
+## Agreg_Monetario1                0.81334    0.26811   3.034  0.00333 **
+## producao_fisica_industrial_dif  0.29818    0.21190   1.407  0.16356   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1328 on 74 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.1128, Adjusted R-squared:  0.06482 
+## F-statistic: 2.352 on 4 and 74 DF,  p-value: 0.06179
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Não gostei, o primeiro vai ser o modelo}
+\end{Highlighting}
+\end{Shaded}
+
+Com isso a regressão mensal passou a ser a do melhor R2 encontrada na
+simulação
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regGapMensal }\OtherTok{\textless{}{-}}\NormalTok{ reg}
+\FunctionTok{summary}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = frm, data = baseLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.42107 -0.05545  0.02770  0.07332  0.21198 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                     0.03020    0.02356   1.282  0.20460    
+## desemprego_dif                  0.30544    0.16692   1.830  0.07208 .  
+## igp_dif                        -1.76450    1.04396  -1.690  0.09601 .  
+## Agreg_Monetario1                1.13807    0.29861   3.811  0.00032 ***
+## producao_fisica_industrial_dif  0.62717    0.22353   2.806  0.00670 ** 
+## jurosEUA_log                    0.01460    0.01135   1.287  0.20302    
+## RMM                             0.01153    0.03255   0.354  0.72432    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1204 on 62 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.2573, Adjusted R-squared:  0.1854 
+## F-statistic: 3.579 on 6 and 62 DF,  p-value: 0.004138
+\end{verbatim}
+
+Rodando um anova
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                Df  Sum Sq  Mean Sq F value   Pr(>F)   
+## desemprego_dif                  1 0.00102 0.001024  0.0706 0.791300   
+## igp_dif                         1 0.03698 0.036976  2.5510 0.115310   
+## Agreg_Monetario1                1 0.10264 0.102636  7.0808 0.009907 **
+## producao_fisica_industrial_dif  1 0.13035 0.130345  8.9925 0.003898 **
+## jurosEUA_log                    1 0.03851 0.038505  2.6565 0.108201   
+## RMM                             1 0.00182 0.001820  0.1255 0.724315   
+## Residuals                      62 0.89868 0.014495                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Vi algumas inconsistencia, por isso fui testar modelo restrito só com
+variaveis singificativas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ModeloIrrestrito }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ desemprego\_dif }\SpecialCharTok{+}\NormalTok{ igp\_dif }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}
+\NormalTok{    jurosEUA\_log }\SpecialCharTok{+}\NormalTok{ RMM,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpa))}
+\NormalTok{modeloRestrito }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpa))}
+
+\FunctionTok{anova}\NormalTok{(modeloRestrito,ModeloIrrestrito)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Model 1: IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif
+## Model 2: IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_fisica_industrial_dif + 
+##     jurosEUA_log + RMM
+##   Res.Df     RSS Df Sum of Sq      F Pr(>F)
+## 1     66 1.01677                           
+## 2     62 0.89868  4   0.11809 2.0368 0.1002
+\end{verbatim}
+
+Com isso o modelo restrito já pareceu melhor
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(model0TodosAgregados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                Df  Sum Sq  Mean Sq F value   Pr(>F)   
+## commoditi_dif                   1 0.00096 0.000964  0.0638 0.801438   
+## desemprego_dif                  1 0.00126 0.001261  0.0835 0.773707   
+## igp_dif                         1 0.03748 0.037482  2.4817 0.120713   
+## Agreg_Monetario1                1 0.10225 0.102250  6.7700 0.011792 * 
+## Agreg_Monetario2                1 0.02264 0.022641  1.4991 0.225849   
+## Agreg_Monetario3                1 0.02082 0.020818  1.3783 0.245267   
+## producao_fisica_industrial_dif  1 0.12058 0.120580  7.9836 0.006496 **
+## jurosEUA_log                    1 0.02298 0.022982  1.5216 0.222438   
+## RMM                             1 0.00077 0.000770  0.0510 0.822144   
+## ibov_ontem                      1 0.00373 0.003725  0.2467 0.621350   
+## gap                             1 0.01562 0.015620  1.0342 0.313478   
+## Residuals                      57 0.86090 0.015103                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Ou seja, modelo Restrito foi melhor, ele passará a ser o nosso novo
+modelo E rodando um anova para a primeira regressão, com todas as
+variaveis, dava igualmente o resultado, ou seja, tudo foi ``atoa'',
+podiamos ter só rodado um anova no teste inicial
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeloRestritoSemAlfa }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{ ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpa))}
+\FunctionTok{summary}\NormalTok{(modeloRestritoSemAlfa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 
+##     1, data = na.omit(baseLimpa))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.41887 -0.05094  0.01676  0.07506  0.22790 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## Agreg_Monetario1                 0.8298     0.2101   3.950  0.00019 ***
+## producao_fisica_industrial_dif   0.7284     0.2176   3.347  0.00134 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1234 on 67 degrees of freedom
+## Multiple R-squared:  0.2008, Adjusted R-squared:  0.1769 
+## F-statistic: 8.417 on 2 and 67 DF,  p-value: 0.0005482
+\end{verbatim}
+
+Por fim testamos tirar o alfa, pois segundo as finanças o retorno medio
+de um ativo tende a ser 0
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modeloRestrito,modeloRestritoSemAlfa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Model 1: IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif
+## Model 2: IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 
+##     1
+##   Res.Df    RSS Df  Sum of Sq      F Pr(>F)
+## 1     66 1.0168                            
+## 2     67 1.0197 -1 -0.0028977 0.1881 0.6659
+\end{verbatim}
+
+melhorou o modelo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regGapMensal }\OtherTok{\textless{}{-}}\NormalTok{ modeloRestritoSemAlfa}
+\FunctionTok{summary}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif - 
+##     1, data = na.omit(baseLimpa))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.41887 -0.05094  0.01676  0.07506  0.22790 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## Agreg_Monetario1                 0.8298     0.2101   3.950  0.00019 ***
+## producao_fisica_industrial_dif   0.7284     0.2176   3.347  0.00134 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1234 on 67 degrees of freedom
+## Multiple R-squared:  0.2008, Adjusted R-squared:  0.1769 
+## F-statistic: 8.417 on 2 and 67 DF,  p-value: 0.0005482
+\end{verbatim}
+
+Ou seja, com essas mudanças, a regressão dos dados mensais passou a ser
+o modelo restrito sem alfa
+
+Apartir daqui é uma sequencia de testes, por terem sidos tratados no
+documento, não irei citar um a um
+
+Reset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reset}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  RESET test
+## 
+## data:  regGapMensal
+## RESET = 0.47471, df1 = 2, df2 = 65, p-value = 0.6242
+\end{verbatim}
+
+VIF
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in vif.default(regGapMensal): No intercept: vifs may not be sensible.
+\end{verbatim}
+
+\begin{verbatim}
+##               Agreg_Monetario1 producao_fisica_industrial_dif 
+##                       1.654051                       1.654051
+\end{verbatim}
+
+Outliers
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Vendo os valores que são 3x maior que a media
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ps\_hat }\OtherTok{\textless{}{-}} \FunctionTok{hatvalues}\NormalTok{(regGapMensal)}
+\FunctionTok{plot}\NormalTok{(ps\_hat)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{mean}\NormalTok{(ps\_hat), }\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
+\NormalTok{id }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(ps\_hat}\SpecialCharTok{\textgreater{}}\DecValTok{3} \SpecialCharTok{*} \FunctionTok{mean}\NormalTok{(ps\_hat))}
+\FunctionTok{text}\NormalTok{(id, ps\_hat[id], }\FunctionTok{index}\NormalTok{(baseLimpa)[id], }\AttributeTok{pos=}\DecValTok{1}\NormalTok{, }\AttributeTok{xpd=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+Testes de diagnóstico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{influence.measures}\NormalTok{(regGapMensal))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Potentially influential observations of
+##   lm(formula = IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif -      1, data = na.omit(baseLimpa)) :
+## 
+##            dfb.A_M1 dfb.p___ dffit   cov.r   cook.d hat    
+## 2003-12-01  0.50     0.10     0.56_*  1.00    0.15   0.08  
+## 2004-12-01  0.04     0.01     0.04    1.11_*  0.00   0.07  
+## 2005-12-01 -0.13    -0.05    -0.14    1.11_*  0.01   0.07  
+## 2008-09-01 -0.46    -0.41    -0.49    0.81_*  0.11   0.02  
+## 2008-12-01  0.19     0.66    -0.72_*  1.19_*  0.25   0.19_*
+## 2013-12-01  0.00    -0.02     0.03    1.09_*  0.00   0.06  
+## 2014-12-01  0.00     0.07    -0.09    1.10_*  0.00   0.06  
+## 2015-12-01  0.00    -0.01     0.02    1.11_*  0.00   0.08  
+## 2020-03-01  0.33     0.16    -0.34    0.71_*  0.05   0.01  
+## 2020-06-01  0.24     0.15     0.24    1.24_*  0.03   0.18_*
+\end{verbatim}
+
+teste de jarqueberaTest
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(regGapMensal)}
+\FunctionTok{jarqueberaTest}\NormalTok{(e)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Title:
+##  Jarque - Bera Normalality Test
+## 
+## Test Results:
+##   STATISTIC:
+##     X-squared: 18.6343
+##   P VALUE:
+##     Asymptotic p Value: 8.987e-05 
+## 
+## Description:
+##  Thu Nov 24 22:43:41 2022 by user: diogo
+\end{verbatim}
+
+Teste de Breusch-Pagan:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{bptest}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  studentized Breusch-Pagan test
+## 
+## data:  regGapMensal
+## BP = 0.54321, df = 1, p-value = 0.4611
+\end{verbatim}
+
+Teste de White
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{white}\NormalTok{(regGapMensal, }\AttributeTok{interactions =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Intercept included in auxiliary design matrix
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   statistic p.value parameter method       alternative
+##       <dbl>   <dbl>     <dbl> <chr>        <chr>      
+## 1      4.17   0.526         5 White's Test greater
+\end{verbatim}
+
+Teste de Goldfeld e Quandt
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gqtest}\NormalTok{(regGapMensal, }\AttributeTok{data=}\NormalTok{baseLimpa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Goldfeld-Quandt test
+## 
+## data:  regGapMensal
+## GQ = 0.94248, df1 = 33, df2 = 32, p-value = 0.5672
+## alternative hypothesis: variance increases from segment 1 to 2
+\end{verbatim}
+
+Matriz de covariância de White:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vcovHC}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                Agreg_Monetario1 producao_fisica_industrial_dif
+## Agreg_Monetario1                     0.04200690                     0.03036972
+## producao_fisica_industrial_dif       0.03036972                     0.04806397
+\end{verbatim}
+
+Ver correlacao serial
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(regGapMensal}\SpecialCharTok{$}\NormalTok{residuals), }\AttributeTok{plot =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-28-1.pdf}
+Teste de Durbin-Watson
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dwtest}\NormalTok{(regGapMensal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Durbin-Watson test
+## 
+## data:  regGapMensal
+## DW = 2.0524, p-value = 0.6459
+## alternative hypothesis: true autocorrelation is greater than 0
+\end{verbatim}
+
+Por fim foi feita uma tentativa de ver dummys de governo, não muito bem
+sucedida
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase))}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(dummys,}\DecValTok{0}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Governo\_Esquerda"}\NormalTok{,}\StringTok{"Governo\_Direita"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2002{-}02{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Esquerda"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Direita"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaGoverno }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseLimpa,dummys)}
+\NormalTok{modeloGoverno }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ Governo\_Esquerda }\SpecialCharTok{+}\NormalTok{ Governo\_Direita }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaGoverno))}
+\end{Highlighting}
+\end{Shaded}
+
+Dummy pandemia, também não mt bem sucedida
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase))}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pandemia"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2020{-}03{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2021{-}01{-}01"}\NormalTok{),}\StringTok{"Pandemia"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaPandemia }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseLimpa,dummys)}
+\NormalTok{modeloPandemia }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ Pandemia }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaPandemia))}
+\FunctionTok{summary}\NormalTok{(modeloPandemia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + 
+##     Pandemia - 1, data = na.omit(baseLimpaPandemia))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.42147 -0.04985  0.01856  0.07857  0.23496 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)   
+## Agreg_Monetario1                0.77977    0.23290   3.348  0.00135 **
+## producao_fisica_industrial_dif  0.69497    0.22843   3.042  0.00337 **
+## Pandemia                        0.06972    0.13677   0.510  0.61194   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1241 on 66 degrees of freedom
+## Multiple R-squared:  0.2039, Adjusted R-squared:  0.1677 
+## F-statistic: 5.636 on 3 and 66 DF,  p-value: 0.001682
+\end{verbatim}
+
+Tratando Outliers: Criterio: 2 ou mais sinalizações no testes de
+diagnosticos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase))}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(dummys,}\DecValTok{0}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"2020{-}06{-}01"}\NormalTok{,}\StringTok{"2008{-}12{-}01"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{==} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2020{-}06{-}01"}\NormalTok{),}\StringTok{"2020{-}06{-}01"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{==} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2008{-}12{-}01"}\NormalTok{),}\StringTok{"2008{-}12{-}01"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaOutliers }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseLimpa,dummys)}
+\NormalTok{baseLimpaOutliers }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(baseLimpaOutliers)}
+\NormalTok{modeloOutliers }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ baseLimpaOutliers[,}\StringTok{"2020{-}06{-}01"}\NormalTok{]}
+  \SpecialCharTok{+}\NormalTok{ baseLimpaOutliers[,}\StringTok{"2008{-}12{-}01"}\NormalTok{] }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{ ,}\AttributeTok{data=}\NormalTok{baseLimpaOutliers)}
+\FunctionTok{summary}\NormalTok{(modeloOutliers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_dif + 
+##     baseLimpaOutliers[, "2020-06-01"] + baseLimpaOutliers[, "2008-12-01"] - 
+##     1, data = baseLimpaOutliers)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.42250 -0.04951  0.02083  0.08264  0.23057 
+## 
+## Coefficients:
+##                                   Estimate Std. Error t value Pr(>|t|)   
+## Agreg_Monetario1                   0.73059    0.23284   3.138  0.00256 **
+## producao_fisica_industrial_dif     0.54328    0.24706   2.199  0.03144 * 
+## baseLimpaOutliers[, "2020-06-01"]  0.08265    0.13568   0.609  0.54457   
+## baseLimpaOutliers[, "2008-12-01"] -0.20830    0.13653  -1.526  0.13194   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1228 on 65 degrees of freedom
+## Multiple R-squared:  0.2315, Adjusted R-squared:  0.1842 
+## F-statistic: 4.894 on 4 and 65 DF,  p-value: 0.00164
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(model0TodosAgregados,regGapMensal,modeloOutliers,}\AttributeTok{type=}\StringTok{"text"}\NormalTok{,}
+          \AttributeTok{column.labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Modelo Geral"}\NormalTok{,}\StringTok{"Modelo Restrito"}\NormalTok{,}\StringTok{"Modelo Restrito Sem Outliers"}\NormalTok{),}
+          \AttributeTok{title =} \StringTok{"GAP Trimestral"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## GAP Trimestral
+## ==========================================================================================================
+##                                                             Dependent variable:                           
+##                                   ------------------------------------------------------------------------
+##                                                                   IBOV_dif                                
+##                                       Modelo Geral         Modelo Restrito    Modelo Restrito Sem Outliers
+##                                            (1)                   (2)                      (3)             
+## ----------------------------------------------------------------------------------------------------------
+## commoditi_dif                            -0.111                                                           
+##                                          (0.242)                                                          
+##                                                                                                           
+## desemprego_dif                            0.234                                                           
+##                                          (0.190)                                                          
+##                                                                                                           
+## igp_dif                                  -1.451                                                           
+##                                          (1.177)                                                          
+##                                                                                                           
+## Agreg_Monetario1                          2.287               0.830***                  0.731***          
+##                                          (2.067)               (0.210)                  (0.233)           
+##                                                                                                           
+## Agreg_Monetario2                          0.765                                                           
+##                                          (0.850)                                                          
+##                                                                                                           
+## Agreg_Monetario3                         -1.885                                                           
+##                                          (2.849)                                                          
+##                                                                                                           
+## producao_fisica_industrial_dif          0.637***              0.728***                  0.543**           
+##                                          (0.235)               (0.218)                  (0.247)           
+##                                                                                                           
+## jurosEUA_log                              0.010                                                           
+##                                          (0.013)                                                          
+##                                                                                                           
+## RMM                                       0.017                                                           
+##                                          (0.035)                                                          
+##                                                                                                           
+## ibov_ontem                               -0.065                                                           
+##                                          (0.141)                                                          
+##                                                                                                           
+## gap                                      -0.475                                                           
+##                                          (0.467)                                                          
+##                                                                                                           
+## baseLimpaOutliers[, "2020-06-01"]                                                        0.083            
+##                                                                                         (0.136)           
+##                                                                                                           
+## baseLimpaOutliers[, "2008-12-01"]                                                        -0.208           
+##                                                                                         (0.137)           
+##                                                                                                           
+## Constant                                  0.026                                                           
+##                                          (0.028)                                                          
+##                                                                                                           
+## ----------------------------------------------------------------------------------------------------------
+## Observations                               69                    69                        69             
+## R2                                        0.289                 0.201                    0.231            
+## Adjusted R2                               0.151                 0.177                    0.184            
+## Residual Std. Error                  0.123 (df = 57)       0.123 (df = 67)          0.123 (df = 65)       
+## F Statistic                       2.101** (df = 11; 57) 8.417*** (df = 2; 67)    4.894*** (df = 4; 65)    
+## ==========================================================================================================
+## Note:                                                                          *p<0.1; **p<0.05; ***p<0.01
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(model0TodosAgregados,regGapMensal,modeloOutliers,}\AttributeTok{type=}\StringTok{"text"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## ===================================================================================================
+##                                                          Dependent variable:                       
+##                                   -----------------------------------------------------------------
+##                                                               IBOV_dif                             
+##                                            (1)                   (2)                   (3)         
+## ---------------------------------------------------------------------------------------------------
+## commoditi_dif                            -0.111                                                    
+##                                          (0.242)                                                   
+##                                                                                                    
+## desemprego_dif                            0.234                                                    
+##                                          (0.190)                                                   
+##                                                                                                    
+## igp_dif                                  -1.451                                                    
+##                                          (1.177)                                                   
+##                                                                                                    
+## Agreg_Monetario1                          2.287               0.830***              0.731***       
+##                                          (2.067)               (0.210)               (0.233)       
+##                                                                                                    
+## Agreg_Monetario2                          0.765                                                    
+##                                          (0.850)                                                   
+##                                                                                                    
+## Agreg_Monetario3                         -1.885                                                    
+##                                          (2.849)                                                   
+##                                                                                                    
+## producao_fisica_industrial_dif          0.637***              0.728***               0.543**       
+##                                          (0.235)               (0.218)               (0.247)       
+##                                                                                                    
+## jurosEUA_log                              0.010                                                    
+##                                          (0.013)                                                   
+##                                                                                                    
+## RMM                                       0.017                                                    
+##                                          (0.035)                                                   
+##                                                                                                    
+## ibov_ontem                               -0.065                                                    
+##                                          (0.141)                                                   
+##                                                                                                    
+## gap                                      -0.475                                                    
+##                                          (0.467)                                                   
+##                                                                                                    
+## baseLimpaOutliers[, "2020-06-01"]                                                     0.083        
+##                                                                                      (0.136)       
+##                                                                                                    
+## baseLimpaOutliers[, "2008-12-01"]                                                    -0.208        
+##                                                                                      (0.137)       
+##                                                                                                    
+## Constant                                  0.026                                                    
+##                                          (0.028)                                                   
+##                                                                                                    
+## ---------------------------------------------------------------------------------------------------
+## Observations                               69                    69                    69          
+## R2                                        0.289                 0.201                 0.231        
+## Adjusted R2                               0.151                 0.177                 0.184        
+## Residual Std. Error                  0.123 (df = 57)       0.123 (df = 67)       0.123 (df = 65)   
+## F Statistic                       2.101** (df = 11; 57) 8.417*** (df = 2; 67) 4.894*** (df = 4; 65)
+## ===================================================================================================
+## Note:                                                                   *p<0.1; **p<0.05; ***p<0.01
+\end{verbatim}
+
+\hypertarget{modelo-mensal-por-replicauxe7uxe3o-do-gap}{%
+\section{Modelo Mensal por replicação do
+GAP}\label{modelo-mensal-por-replicauxe7uxe3o-do-gap}}
+
+Reconstruindo a base de dados para GAP não mensal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{baseDadosMensalFill }\OtherTok{\textless{}{-}}\NormalTok{ baseDados}
+\NormalTok{baseDadosMensalFill }\OtherTok{\textless{}{-}} \FunctionTok{na.locf}\NormalTok{(baseDadosMensalFill)}
+\NormalTok{baseDadosMensalFill }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(baseDadosMensalFill)}
+
+\CommentTok{\#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);}
+\NormalTok{ibov\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\StringTok{"ibov"}\NormalTok{]))}
+
+\CommentTok{\#ibovespa de ontem}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_dif}
+\NormalTok{ibov\_ontem\_index }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_ontem}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth\_lag1 =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{lag}\NormalTok{(ibov\_ontem))}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(ibov\_ontem[,}\DecValTok{2}\NormalTok{],}\AttributeTok{order.by =}\NormalTok{ ibov\_ontem\_index)}
+
+\CommentTok{\#a primeira diferença do logaritmo dos preços das Commodities (COM);}
+\NormalTok{commoditi\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\DecValTok{5}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalFill)[}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Índice.de.Commodities"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego {-} PME/ IBGE{-}19(DES);}
+\NormalTok{desemprego\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\StringTok{"desemprego"}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do IGP (IGP);}
+\NormalTok{igp\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\StringTok{\textquotesingle{}1.IGPM\textquotesingle{}}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do agregado monetário M1(M1)}
+\NormalTok{M1}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.2} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.3} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\DecValTok{3}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalFill)[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Papel.moeda.em.circulação" "Reservas.bancárias"       
+## [3] "Base.monetária.restrita"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo da produção física industrial dessazonalizada}
+\NormalTok{producao\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalFill[,}\DecValTok{4}\NormalTok{]))}
+
+\CommentTok{\# o logaritmo da taxa de juros dos EUA (EUA).}
+\NormalTok{juros\_log }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(baseDadosMensalFill[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);}
+\NormalTok{RMM }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalFill[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{] }\SpecialCharTok{{-}} \FunctionTok{rollmean}\NormalTok{(baseDadosMensalFill[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{],}\DecValTok{12}\NormalTok{)}
+
+\CommentTok{\#gap}
+\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalFill[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{baseDadosMensalFillLimpa }\OtherTok{\textless{}{-}} \FunctionTok{merge.zoo}\NormalTok{(ibov\_dif,commoditi\_dif,desemprego\_dif,igp\_dif, M1}\FloatTok{.1}\NormalTok{, M1}\FloatTok{.2}\NormalTok{, M1}\FloatTok{.3}\NormalTok{, producao\_dif, juros\_log,RMM,ibov\_ontem,gap)}
+
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalFillLimpa) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{,}\StringTok{"commoditi\_dif"}\NormalTok{,}\StringTok{"desemprego\_dif"}\NormalTok{,}\StringTok{"igp\_dif"}\NormalTok{,}\StringTok{"Agreg\_Monetario1"}\NormalTok{,}\StringTok{"Agreg\_Monetario2"}\NormalTok{,}\StringTok{"Agreg\_Monetario3"}\NormalTok{,}
+                                        \StringTok{"producao\_fisica\_industrial\_dif"}\NormalTok{,}\StringTok{"jurosEUA\_log"}\NormalTok{,}\StringTok{"RMM"}\NormalTok{,}\StringTok{"ibov\_ontem"}\NormalTok{,}\StringTok{"gap"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Correlacao
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(baseDadosMensalFillLimpa))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                     IBOV_dif commoditi_dif desemprego_dif
+## IBOV_dif                        1.0000000000   -0.12536823  -0.0006254976
+## commoditi_dif                  -0.1253682322    1.00000000  -0.1191571473
+## desemprego_dif                 -0.0006254976   -0.11915715   1.0000000000
+## igp_dif                        -0.0268439507    0.27945957   0.0073082044
+## Agreg_Monetario1                0.1120274018    0.19386794  -0.6190209547
+## Agreg_Monetario2                0.0804594113    0.07368604  -0.1942690383
+## Agreg_Monetario3                0.1219127232    0.17254955  -0.5593157965
+## producao_fisica_industrial_dif  0.0048188957   -0.01095344   0.2207348959
+## jurosEUA_log                    0.0563994844   -0.09628773  -0.0735683246
+## RMM                            -0.1281589552   -0.03979091  -0.0626476981
+## ibov_ontem                      0.1060521074   -0.07099775  -0.0371972526
+## gap                            -0.1374463798   -0.06784668  -0.1571444501
+##                                     igp_dif Agreg_Monetario1 Agreg_Monetario2
+## IBOV_dif                       -0.026843951      0.112027402       0.08045941
+## commoditi_dif                   0.279459573      0.193867938       0.07368604
+## desemprego_dif                  0.007308204     -0.619020955      -0.19426904
+## igp_dif                         1.000000000      0.060349058       0.08685389
+## Agreg_Monetario1                0.060349058      1.000000000       0.34073211
+## Agreg_Monetario2                0.086853894      0.340732113       1.00000000
+## Agreg_Monetario3                0.073448146      0.917732790       0.66634867
+## producao_fisica_industrial_dif  0.001086623     -0.427980592      -0.03734617
+## jurosEUA_log                   -0.095046819      0.012268499       0.03463877
+## RMM                            -0.003155480     -0.040396190       0.06114774
+## ibov_ontem                     -0.078667719      0.008810398       0.07572848
+## gap                            -0.109631600      0.001793535      -0.05835512
+##                                Agreg_Monetario3 producao_fisica_industrial_dif
+## IBOV_dif                            0.121912723                    0.004818896
+## commoditi_dif                       0.172549549                   -0.010953439
+## desemprego_dif                     -0.559315796                    0.220734896
+## igp_dif                             0.073448146                    0.001086623
+## Agreg_Monetario1                    0.917732790                   -0.427980592
+## Agreg_Monetario2                    0.666348673                   -0.037346170
+## Agreg_Monetario3                    1.000000000                   -0.361719891
+## producao_fisica_industrial_dif     -0.361719891                    1.000000000
+## jurosEUA_log                        0.020045898                    0.022449161
+## RMM                                -0.009075138                    0.090118586
+## ibov_ontem                          0.022713784                    0.145675758
+## gap                                -0.022228091                   -0.041300097
+##                                jurosEUA_log          RMM   ibov_ontem
+## IBOV_dif                         0.05639948 -0.128158955  0.106052107
+## commoditi_dif                   -0.09628773 -0.039790907 -0.070997748
+## desemprego_dif                  -0.07356832 -0.062647698 -0.037197253
+## igp_dif                         -0.09504682 -0.003155480 -0.078667719
+## Agreg_Monetario1                 0.01226850 -0.040396190  0.008810398
+## Agreg_Monetario2                 0.03463877  0.061147744  0.075728477
+## Agreg_Monetario3                 0.02004590 -0.009075138  0.022713784
+## producao_fisica_industrial_dif   0.02244916  0.090118586  0.145675758
+## jurosEUA_log                     1.00000000  0.288001688  0.112555568
+## RMM                              0.28800169  1.000000000  0.046137568
+## ibov_ontem                       0.11255557  0.046137568  1.000000000
+## gap                             -0.07942791  0.115603614 -0.137052055
+##                                         gap
+## IBOV_dif                       -0.137446380
+## commoditi_dif                  -0.067846680
+## desemprego_dif                 -0.157144450
+## igp_dif                        -0.109631600
+## Agreg_Monetario1                0.001793535
+## Agreg_Monetario2               -0.058355118
+## Agreg_Monetario3               -0.022228091
+## producao_fisica_industrial_dif -0.041300097
+## jurosEUA_log                   -0.079427910
+## RMM                             0.115603614
+## ibov_ontem                     -0.137052055
+## gap                             1.000000000
+\end{verbatim}
+
+Modelo generalista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelFillTodos }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}\AttributeTok{data=}\NormalTok{baseDadosMensalFillLimpa)}
+\FunctionTok{summary}\NormalTok{(modelFillTodos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ ., data = baseDadosMensalFillLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.38566 -0.03353 -0.00392  0.04065  0.19840 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)                     0.007941   0.006345   1.251   0.2121  
+## commoditi_dif                  -0.290063   0.128466  -2.258   0.0250 *
+## desemprego_dif                  0.101673   0.107519   0.946   0.3454  
+## igp_dif                         0.023278   0.524551   0.044   0.9646  
+## Agreg_Monetario1                0.142242   0.720212   0.198   0.8436  
+## Agreg_Monetario2               -0.030909   0.251566  -0.123   0.9023  
+## Agreg_Monetario3                0.286318   0.945536   0.303   0.7623  
+## producao_fisica_industrial_dif  0.074382   0.076026   0.978   0.3290  
+## jurosEUA_log                    0.003159   0.003262   0.968   0.3339  
+## RMM                            -0.059562   0.029372  -2.028   0.0438 *
+## ibov_ontem                      0.069969   0.067329   1.039   0.2999  
+## gap                            -0.193911   0.134773  -1.439   0.1517  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06824 on 215 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.08903,    Adjusted R-squared:  0.04242 
+## F-statistic:  1.91 on 11 and 215 DF,  p-value: 0.03939
+\end{verbatim}
+
+Desta vez, já fui direto ao anova.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modelFillTodos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                 Df  Sum Sq   Mean Sq F value  Pr(>F)  
+## commoditi_dif                    1 0.01727 0.0172740  3.7095 0.05542 .
+## desemprego_dif                   1 0.00027 0.0002701  0.0580 0.80992  
+## igp_dif                          1 0.00009 0.0000932  0.0200 0.88765  
+## Agreg_Monetario1                 1 0.02932 0.0293155  6.2953 0.01284 *
+## Agreg_Monetario2                 1 0.00215 0.0021464  0.4609 0.49792  
+## Agreg_Monetario3                 1 0.00003 0.0000290  0.0062 0.93714  
+## producao_fisica_industrial_dif   1 0.00573 0.0057312  1.2307 0.26850  
+## jurosEUA_log                     1 0.00218 0.0021820  0.4686 0.49438  
+## RMM                              1 0.02374 0.0237418  5.0984 0.02495 *
+## ibov_ontem                       1 0.00743 0.0074272  1.5949 0.20799  
+## gap                              1 0.00964 0.0096401  2.0701 0.15166  
+## Residuals                      215 1.00120 0.0046567                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Selecionando as variaveis que fizeram diferença
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelMensalSimples }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ commoditi\_dif }\SpecialCharTok{+}\NormalTok{ RMM }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1,}\AttributeTok{data=}\NormalTok{baseDadosMensalFillLimpa)}
+\FunctionTok{summary}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1, 
+##     data = baseDadosMensalFillLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.38186 -0.04095  0.00048  0.04462  0.19779 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)       0.010912   0.004711   2.316   0.0214 *
+## commoditi_dif    -0.289227   0.122442  -2.362   0.0190 *
+## RMM              -0.054540   0.027638  -1.973   0.0497 *
+## Agreg_Monetario1  0.238483   0.115546   2.064   0.0402 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06837 on 223 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.05159,    Adjusted R-squared:  0.03883 
+## F-statistic: 4.044 on 3 and 223 DF,  p-value: 0.007957
+\end{verbatim}
+
+Melhorou a principio.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelMensalSimplesSemAlfa }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ commoditi\_dif }\SpecialCharTok{+}\NormalTok{ RMM  }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{ ,}\AttributeTok{data=}\NormalTok{baseDadosMensalFillLimpa)}
+\FunctionTok{summary}\NormalTok{(modelMensalSimplesSemAlfa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + commoditi_dif + RMM - 
+##     1, data = baseDadosMensalFillLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.36845 -0.03078  0.00981  0.05288  0.20064 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)  
+## Agreg_Monetario1  0.29537    0.11400   2.591   0.0102 *
+## commoditi_dif    -0.25528    0.12274  -2.080   0.0387 *
+## RMM              -0.05270    0.02789  -1.889   0.0601 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06903 on 224 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.05371,    Adjusted R-squared:  0.04103 
+## F-statistic: 4.238 on 3 and 224 DF,  p-value: 0.006151
+\end{verbatim}
+
+Selecionando as variaveis que fizeram diferença, removendo o alfa pelo
+mesmo motivo da analise anterior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(modelMensalSimples,modelMensalSimplesSemAlfa,}\AttributeTok{type=}\StringTok{"text"}\NormalTok{,}\AttributeTok{title=}\StringTok{"Comparando Modelo com e sem Alfa gap mensal"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Comparando Modelo com e sem Alfa gap mensal
+## =================================================================
+##                                  Dependent variable:             
+##                     ---------------------------------------------
+##                                       IBOV_dif                   
+##                              (1)                    (2)          
+## -----------------------------------------------------------------
+## commoditi_dif              -0.289**               -0.255**       
+##                            (0.122)                (0.123)        
+##                                                                  
+## RMM                        -0.055**               -0.053*        
+##                            (0.028)                (0.028)        
+##                                                                  
+## Agreg_Monetario1           0.238**                0.295**        
+##                            (0.116)                (0.114)        
+##                                                                  
+## Constant                   0.011**                               
+##                            (0.005)                               
+##                                                                  
+## -----------------------------------------------------------------
+## Observations                 227                    227          
+## R2                          0.052                  0.054         
+## Adjusted R2                 0.039                  0.041         
+## Residual Std. Error    0.068 (df = 223)       0.069 (df = 224)   
+## F Statistic         4.044*** (df = 3; 223) 4.238*** (df = 3; 224)
+## =================================================================
+## Note:                                 *p<0.1; **p<0.05; ***p<0.01
+\end{verbatim}
+
+O modelo mensal passou a ser o Sem o Alfa
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelMensalSimples }\OtherTok{\textless{}{-}}\NormalTok{ modelMensalSimplesSemAlfa}
+
+\FunctionTok{summary}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario1 + commoditi_dif + RMM - 
+##     1, data = baseDadosMensalFillLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.36845 -0.03078  0.00981  0.05288  0.20064 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)  
+## Agreg_Monetario1  0.29537    0.11400   2.591   0.0102 *
+## commoditi_dif    -0.25528    0.12274  -2.080   0.0387 *
+## RMM              -0.05270    0.02789  -1.889   0.0601 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06903 on 224 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.05371,    Adjusted R-squared:  0.04103 
+## F-statistic: 4.238 on 3 and 224 DF,  p-value: 0.006151
+\end{verbatim}
+
+Os testes, por serem os mesmos do modelo anterior, não será re-citado
+Teste reset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reset}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  RESET test
+## 
+## data:  modelMensalSimples
+## RESET = 0.03579, df1 = 2, df2 = 222, p-value = 0.9648
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in vif.default(modelMensalSimples): No intercept: vifs may not be
+## sensible.
+\end{verbatim}
+
+\begin{verbatim}
+## Agreg_Monetario1    commoditi_dif              RMM 
+##         1.054512         1.054603         1.002122
+\end{verbatim}
+
+Graficos a serem analisados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Elementos da diagonal de H:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ps\_hat }\OtherTok{\textless{}{-}} \FunctionTok{hatvalues}\NormalTok{(modelMensalSimples)}
+\FunctionTok{plot}\NormalTok{(ps\_hat)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{mean}\NormalTok{(ps\_hat), }\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
+\NormalTok{id }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(ps\_hat}\SpecialCharTok{\textgreater{}}\DecValTok{3} \SpecialCharTok{*} \FunctionTok{mean}\NormalTok{(ps\_hat))}
+\FunctionTok{text}\NormalTok{(id, ps\_hat[id], }\FunctionTok{index}\NormalTok{(baseDadosMensalFillLimpa)[id], }\AttributeTok{pos=}\DecValTok{1}\NormalTok{, }\AttributeTok{xpd=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-46-1.pdf}
+Testes de diagnóstico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{influence.measures}\NormalTok{(modelMensalSimples))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Potentially influential observations of
+##   lm(formula = IBOV_dif ~ Agreg_Monetario1 + commoditi_dif + RMM -      1, data = baseDadosMensalFillLimpa) :
+## 
+##            dfb.A_M1 dfb.cmm_ dfb.RMM dffit   cov.r   cook.d hat    
+## 2002-09-01 -0.02    -0.44    -0.21   -0.50_*  0.99    0.08   0.04_*
+## 2002-10-01  0.07     0.78     0.35    0.88_*  0.97    0.25   0.07_*
+## 2002-12-01  0.08     0.00    -0.02    0.09    1.09_*  0.00   0.07_*
+## 2003-02-01  0.05    -0.06     0.01   -0.07    1.05_*  0.00   0.04  
+## 2003-12-01  0.22    -0.01     0.00    0.23    1.10_*  0.02   0.09_*
+## 2004-05-01  0.00     0.01     0.00    0.01    1.04_*  0.00   0.03  
+## 2004-12-01 -0.05     0.02     0.00   -0.05    1.10_*  0.00   0.08_*
+## 2005-02-01 -0.11    -0.08    -0.04    0.16    0.96_*  0.01   0.01  
+## 2005-12-01  0.07     0.02     0.00    0.08    1.10_*  0.00   0.08_*
+## 2006-01-01 -0.19     0.11    -0.07    0.22    0.96_*  0.02   0.01  
+## 2006-12-01  0.07    -0.01     0.00    0.07    1.06_*  0.00   0.04_*
+## 2007-10-01  0.04    -0.04     0.30    0.31    1.03    0.03   0.04_*
+## 2007-11-01 -0.01     0.00    -0.05   -0.05    1.06_*  0.00   0.04_*
+## 2007-12-01  0.02     0.00     0.02    0.02    1.12_*  0.00   0.10_*
+## 2008-01-01  0.02    -0.03    -0.07   -0.08    1.07_*  0.00   0.05_*
+## 2008-08-01 -0.05     0.12    -0.22   -0.25    1.09_*  0.02   0.08_*
+## 2008-09-01 -0.04    -0.11    -0.32   -0.34    1.07_*  0.04   0.08_*
+## 2008-10-01 -0.09    -0.03     0.05   -0.12    0.79_*  0.00   0.00  
+## 2008-11-01 -0.02     0.07     0.16   -0.17    1.05_*  0.01   0.04_*
+## 2008-12-01 -0.10     0.04     0.13   -0.17    1.10_*  0.01   0.08_*
+## 2009-01-01 -0.04     0.00    -0.09    0.09    1.04_*  0.00   0.03  
+## 2009-04-01  0.02    -0.03    -0.03    0.04    0.96_*  0.00   0.00  
+## 2009-12-01 -0.01     0.00     0.00   -0.01    1.05_*  0.00   0.04  
+## 2010-12-01  0.01     0.00     0.00    0.01    1.05_*  0.00   0.03  
+## 2011-12-01 -0.09     0.03     0.01   -0.09    1.04_*  0.00   0.03  
+## 2012-12-01  0.08    -0.01     0.01    0.08    1.04_*  0.00   0.03  
+## 2020-01-01 -0.01     0.01     0.05    0.05    1.05_*  0.00   0.04  
+## 2020-02-01  0.01     0.00    -0.20   -0.21    1.08_*  0.01   0.07_*
+## 2020-03-01  0.04     0.43     0.28   -0.52_*  0.68_*  0.08   0.01  
+## 2020-04-01  0.07     0.00    -0.19    0.20    1.07_*  0.01   0.06_*
+## 2020-05-01  0.12     0.13    -0.14    0.25    1.11_*  0.02   0.09_*
+## 2020-06-01  0.07    -0.06    -0.07    0.11    1.05_*  0.00   0.04  
+## 2020-11-01  0.01     0.00     0.01    0.02    0.95_*  0.00   0.00  
+## 2021-01-01  0.00    -0.01     0.00   -0.01    1.05_*  0.00   0.03
+\end{verbatim}
+
+teste de Jarque-Bera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(modelMensalSimples)}
+\FunctionTok{jarqueberaTest}\NormalTok{(e)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Title:
+##  Jarque - Bera Normalality Test
+## 
+## Test Results:
+##   STATISTIC:
+##     X-squared: 255.2294
+##   P VALUE:
+##     Asymptotic p Value: < 2.2e-16 
+## 
+## Description:
+##  Thu Nov 24 22:43:43 2022 by user: diogo
+\end{verbatim}
+
+Teste de Breusch-Pagan:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{bptest}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  studentized Breusch-Pagan test
+## 
+## data:  modelMensalSimples
+## BP = 0.67602, df = 2, p-value = 0.7132
+\end{verbatim}
+
+Teste de White
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{white}\NormalTok{(modelMensalSimples, }\AttributeTok{interactions =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Intercept included in auxiliary design matrix
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   statistic p.value parameter method       alternative
+##       <dbl>   <dbl>     <dbl> <chr>        <chr>      
+## 1      11.6   0.235         9 White's Test greater
+\end{verbatim}
+
+Teste de Goldfeld e Quandt
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gqtest}\NormalTok{(modelMensalSimples, }\AttributeTok{data=}\NormalTok{baseDadosMensalFillLimpa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Goldfeld-Quandt test
+## 
+## data:  modelMensalSimples
+## GQ = 0.87296, df1 = 111, df2 = 110, p-value = 0.7619
+## alternative hypothesis: variance increases from segment 1 to 2
+\end{verbatim}
+
+Matriz de covariância de White:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vcovHC}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Agreg_Monetario1 commoditi_dif          RMM
+## Agreg_Monetario1     0.0065357455  -0.000513005 0.0003710911
+## commoditi_dif       -0.0005130050   0.023665671 0.0013467042
+## RMM                  0.0003710911   0.001346704 0.0007380318
+\end{verbatim}
+
+Ver correlacao serial
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(modelMensalSimples}\SpecialCharTok{$}\NormalTok{residuals), }\AttributeTok{plot =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-53-1.pdf}
+Teste de Durbin-Watson
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dwtest}\NormalTok{(modelMensalSimples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Durbin-Watson test
+## 
+## data:  modelMensalSimples
+## DW = 1.7654, p-value = 0.038
+## alternative hypothesis: true autocorrelation is greater than 0
+\end{verbatim}
+
+Dummys: Governos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseDadosMensalFillLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase),}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Governo\_Esquerda"}\NormalTok{,}\StringTok{"Governo\_Direita"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2002{-}02{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Esquerda"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Direita"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaGoverno }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseDadosMensalFillLimpa,dummys)}
+\NormalTok{modeloGovernoGap }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ commoditi\_dif }\SpecialCharTok{+}\NormalTok{ RMM }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{{-}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Governo\_Esquerda }\SpecialCharTok{+}\NormalTok{ Governo\_Direita }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaGoverno))}
+\FunctionTok{summary}\NormalTok{(modeloGovernoGap)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 
+##     1 + Governo_Esquerda + Governo_Direita - 1, data = na.omit(baseLimpaGoverno))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.38662 -0.04177  0.00052  0.04504  0.20025 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)  
+## commoditi_dif    -0.296396   0.123273  -2.404   0.0170 *
+## RMM              -0.054683   0.027682  -1.975   0.0495 *
+## Agreg_Monetario1  0.240836   0.115795   2.080   0.0387 *
+## Governo_Esquerda  0.009412   0.005405   1.741   0.0830 .
+## Governo_Direita   0.015374   0.009150   1.680   0.0943 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06847 on 222 degrees of freedom
+## Multiple R-squared:  0.07729,    Adjusted R-squared:  0.05651 
+## F-statistic: 3.719 on 5 and 222 DF,  p-value: 0.002976
+\end{verbatim}
+
+Dummy pandemia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseDadosMensalFillLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase))}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pandemia"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2020{-}03{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2020{-}06{-}01"}\NormalTok{),}\StringTok{"Pandemia"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaPandemia }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseDadosMensalFillLimpa,dummys)}
+\NormalTok{modeloPandemia }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ commoditi\_dif }\SpecialCharTok{+}\NormalTok{ RMM }\SpecialCharTok{+}\NormalTok{ Pandemia }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaPandemia))}
+\FunctionTok{summary}\NormalTok{(modeloPandemia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ commoditi_dif + RMM + Pandemia + Agreg_Monetario1 - 
+##     1, data = na.omit(baseLimpaPandemia))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.36841 -0.02971  0.00791  0.05419  0.20181 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)  
+## commoditi_dif    -0.27201    0.12348  -2.203   0.0286 *
+## RMM              -0.04293    0.02911  -1.475   0.1416  
+## Pandemia          0.06115    0.05245   1.166   0.2449  
+## Agreg_Monetario1  0.27133    0.11576   2.344   0.0200 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06898 on 223 degrees of freedom
+## Multiple R-squared:  0.05944,    Adjusted R-squared:  0.04257 
+## F-statistic: 3.523 on 4 and 223 DF,  p-value: 0.008222
+\end{verbatim}
+
+tratando outliers:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseDadosMensalFillLimpa)}
+\NormalTok{outliers }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"2002{-}09{-}01"}\NormalTok{,}\StringTok{"2002{-}10{-}01"}\NormalTok{,}\StringTok{"2007{-}11{-}01"}\NormalTok{,}\StringTok{"2007{-}12{-}01"}\NormalTok{,}\StringTok{"2008{-}01{-}01"}\NormalTok{,}\StringTok{"2008{-}08{-}01"}\NormalTok{,}
+              \StringTok{"2008{-}09{-}01"}\NormalTok{,}\StringTok{"2008{-}11{-}01"}\NormalTok{,}\StringTok{"2008{-}12{-}01"}\NormalTok{)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\FunctionTok{length}\NormalTok{(indexBase),}\AttributeTok{ncol=}\FunctionTok{length}\NormalTok{(outliers))}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ outliers}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ outliers)\{}
+\NormalTok{  dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{==}\NormalTok{ i,i] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{\}}
+\NormalTok{baseMensalFillSemOutliers }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseDadosMensalFillLimpa,dummys)}
+\FunctionTok{paste}\NormalTok{(outliers,}\AttributeTok{collapse =} \StringTok{\textquotesingle{} + \textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2002-09-01 + 2002-10-01 + 2007-11-01 + 2007-12-01 + 2008-01-01 + 2008-08-01 + 2008-09-01 + 2008-11-01 + 2008-12-01"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeloSemOutliers }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ commoditi\_dif }\SpecialCharTok{+}\NormalTok{ RMM }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{{-}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ baseMensalFillSemOutliers[,}\StringTok{"2002{-}09{-}01"}\NormalTok{] }\SpecialCharTok{+}
+\NormalTok{  baseMensalFillSemOutliers[,}\StringTok{"2002{-}10{-}01"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ baseMensalFillSemOutliers[,}\StringTok{"2007{-}11{-}01"}\NormalTok{] }\SpecialCharTok{+}
+\NormalTok{  baseMensalFillSemOutliers[,}\StringTok{"2007{-}12{-}01"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ baseMensalFillSemOutliers[,}\StringTok{"2008{-}01{-}01"}\NormalTok{] }\SpecialCharTok{+}
+\NormalTok{  baseMensalFillSemOutliers[,}\StringTok{"2008{-}08{-}01"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ baseMensalFillSemOutliers[,}\StringTok{"2008{-}09{-}01"}\NormalTok{] }\SpecialCharTok{+}
+\NormalTok{  baseMensalFillSemOutliers[,}\StringTok{"2008{-}11{-}01"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ baseMensalFillSemOutliers[,}\StringTok{"2008{-}12{-}01"}\NormalTok{] ,}\AttributeTok{data=}\NormalTok{baseMensalFillSemOutliers)}
+\FunctionTok{summary}\NormalTok{(modeloSemOutliers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 
+##     1 + baseMensalFillSemOutliers[, "2002-09-01"] + baseMensalFillSemOutliers[, 
+##     "2002-10-01"] + baseMensalFillSemOutliers[, "2007-11-01"] + 
+##     baseMensalFillSemOutliers[, "2007-12-01"] + baseMensalFillSemOutliers[, 
+##     "2008-01-01"] + baseMensalFillSemOutliers[, "2008-08-01"] + 
+##     baseMensalFillSemOutliers[, "2008-09-01"] + baseMensalFillSemOutliers[, 
+##     "2008-11-01"] + baseMensalFillSemOutliers[, "2008-12-01"], 
+##     data = baseMensalFillSemOutliers)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.36939 -0.02581  0.00935  0.05309  0.15426 
+## 
+## Coefficients:
+##                                            Estimate Std. Error t value Pr(>|t|)
+## commoditi_dif                             -0.303698   0.130399  -2.329  0.02079
+## RMM                                       -0.044267   0.034457  -1.285  0.20028
+## Agreg_Monetario1                           0.311630   0.117636   2.649  0.00867
+## baseMensalFillSemOutliers[, "2002-09-01"] -0.152511   0.069723  -2.187  0.02979
+## baseMensalFillSemOutliers[, "2002-10-01"]  0.204811   0.071046   2.883  0.00434
+## baseMensalFillSemOutliers[, "2007-11-01"] -0.019259   0.070059  -0.275  0.78366
+## baseMensalFillSemOutliers[, "2007-12-01"] -0.001402   0.072183  -0.019  0.98452
+## baseMensalFillSemOutliers[, "2008-01-01"] -0.024752   0.070478  -0.351  0.72578
+## baseMensalFillSemOutliers[, "2008-08-01"] -0.065935   0.071442  -0.923  0.35709
+## baseMensalFillSemOutliers[, "2008-09-01"] -0.082961   0.071762  -1.156  0.24894
+## baseMensalFillSemOutliers[, "2008-11-01"] -0.053299   0.069959  -0.762  0.44698
+## baseMensalFillSemOutliers[, "2008-12-01"] -0.035108   0.071368  -0.492  0.62327
+##                                             
+## commoditi_dif                             * 
+## RMM                                         
+## Agreg_Monetario1                          **
+## baseMensalFillSemOutliers[, "2002-09-01"] * 
+## baseMensalFillSemOutliers[, "2002-10-01"] **
+## baseMensalFillSemOutliers[, "2007-11-01"]   
+## baseMensalFillSemOutliers[, "2007-12-01"]   
+## baseMensalFillSemOutliers[, "2008-01-01"]   
+## baseMensalFillSemOutliers[, "2008-08-01"]   
+## baseMensalFillSemOutliers[, "2008-09-01"]   
+## baseMensalFillSemOutliers[, "2008-11-01"]   
+## baseMensalFillSemOutliers[, "2008-12-01"]   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06776 on 215 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.1249, Adjusted R-squared:  0.07603 
+## F-statistic: 2.557 on 12 and 215 DF,  p-value: 0.003514
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(modelFillTodos,modelMensalSimples,modeloSemOutliers, }\AttributeTok{type=}\StringTok{"text"}\NormalTok{,}\AttributeTok{column.labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Modelo Completo"}\NormalTok{,}
+                                                                                             \StringTok{"Modelo Simples"}\NormalTok{,}
+                                                                                             \StringTok{"Modelo Simples Sem Outliers"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## ===================================================================================================================
+##                                                                      Dependent variable:                           
+##                                           -------------------------------------------------------------------------
+##                                                                           IBOV_dif                                 
+##                                              Modelo Completo         Modelo Simples     Modelo Simples Sem Outliers
+##                                                    (1)                    (2)                       (3)            
+## -------------------------------------------------------------------------------------------------------------------
+## commoditi_dif                                    -0.290**               -0.255**                 -0.304**          
+##                                                  (0.128)                (0.123)                   (0.130)          
+##                                                                                                                    
+## desemprego_dif                                    0.102                                                            
+##                                                  (0.108)                                                           
+##                                                                                                                    
+## igp_dif                                           0.023                                                            
+##                                                  (0.525)                                                           
+##                                                                                                                    
+## Agreg_Monetario1                                  0.142                 0.295**                  0.312***          
+##                                                  (0.720)                (0.114)                   (0.118)          
+##                                                                                                                    
+## Agreg_Monetario2                                  -0.031                                                           
+##                                                  (0.252)                                                           
+##                                                                                                                    
+## Agreg_Monetario3                                  0.286                                                            
+##                                                  (0.946)                                                           
+##                                                                                                                    
+## producao_fisica_industrial_dif                    0.074                                                            
+##                                                  (0.076)                                                           
+##                                                                                                                    
+## jurosEUA_log                                      0.003                                                            
+##                                                  (0.003)                                                           
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2002-09-01"]                                                        -0.153**          
+##                                                                                                   (0.070)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2002-10-01"]                                                        0.205***          
+##                                                                                                   (0.071)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2007-11-01"]                                                         -0.019           
+##                                                                                                   (0.070)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2007-12-01"]                                                         -0.001           
+##                                                                                                   (0.072)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2008-01-01"]                                                         -0.025           
+##                                                                                                   (0.070)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2008-08-01"]                                                         -0.066           
+##                                                                                                   (0.071)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2008-09-01"]                                                         -0.083           
+##                                                                                                   (0.072)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2008-11-01"]                                                         -0.053           
+##                                                                                                   (0.070)          
+##                                                                                                                    
+## baseMensalFillSemOutliers[, "2008-12-01"]                                                         -0.035           
+##                                                                                                   (0.071)          
+##                                                                                                                    
+## RMM                                              -0.060**               -0.053*                   -0.044           
+##                                                  (0.029)                (0.028)                   (0.034)          
+##                                                                                                                    
+## ibov_ontem                                        0.070                                                            
+##                                                  (0.067)                                                           
+##                                                                                                                    
+## gap                                               -0.194                                                           
+##                                                  (0.135)                                                           
+##                                                                                                                    
+## Constant                                          0.008                                                            
+##                                                  (0.006)                                                           
+##                                                                                                                    
+## -------------------------------------------------------------------------------------------------------------------
+## Observations                                       227                    227                       227            
+## R2                                                0.089                  0.054                     0.125           
+## Adjusted R2                                       0.042                  0.041                     0.076           
+## Residual Std. Error                          0.068 (df = 215)       0.069 (df = 224)         0.068 (df = 215)      
+## F Statistic                               1.910** (df = 11; 215) 4.238*** (df = 3; 224)   2.557*** (df = 12; 215)  
+## ===================================================================================================================
+## Note:                                                                                   *p<0.1; **p<0.05; ***p<0.01
+\end{verbatim}
+
+\hypertarget{mensal---gap-linearizado}{%
+\section{Mensal - Gap Linearizado}\label{mensal---gap-linearizado}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{baseDadosMensalAprox }\OtherTok{\textless{}{-}}\NormalTok{ baseDados}
+\NormalTok{baseDadosMensalAprox }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalAprox[}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{),]}
+\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalAprox[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{]}
+\NormalTok{index\_gap }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseDadosMensalAprox[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{])}
+\NormalTok{gap }\OtherTok{\textless{}{-}} \FunctionTok{na.approx}\NormalTok{(}\FunctionTok{coredata}\NormalTok{(gap))}
+\NormalTok{gap }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(gap,}\AttributeTok{order.by =}\NormalTok{ index\_gap)}
+\NormalTok{baseDadosMensalAprox}\SpecialCharTok{$}\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ gap}
+
+\CommentTok{\#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);}
+\NormalTok{ibov\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\StringTok{"ibov"}\NormalTok{]))}
+
+\CommentTok{\#ibovespa de ontem}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_dif}
+\NormalTok{ibov\_ontem\_index }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_ontem}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth\_lag1 =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{lag}\NormalTok{(ibov\_ontem))}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(ibov\_ontem[,}\DecValTok{2}\NormalTok{],}\AttributeTok{order.by =}\NormalTok{ ibov\_ontem\_index)}
+
+\CommentTok{\#a primeira diferença do logaritmo dos preços das Commodities (COM);}
+\NormalTok{commoditi\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\DecValTok{5}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalAprox)[}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Índice.de.Commodities"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego {-} PME/ IBGE{-}19(DES);}
+\NormalTok{desemprego\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\StringTok{"desemprego"}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do IGP (IGP);}
+\NormalTok{igp\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\StringTok{\textquotesingle{}1.IGPM\textquotesingle{}}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do agregado monetário M1(M1)}
+\NormalTok{M1}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.2} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.3} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\DecValTok{3}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalAprox)[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Papel.moeda.em.circulação" "Reservas.bancárias"       
+## [3] "Base.monetária.restrita"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo da produção física industrial dessazonalizada}
+\NormalTok{producao\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseDadosMensalAprox[,}\DecValTok{4}\NormalTok{]))}
+
+\CommentTok{\# o logaritmo da taxa de juros dos EUA (EUA).}
+\NormalTok{juros\_log }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(baseDadosMensalAprox[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);}
+\NormalTok{RMM }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalAprox[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{] }\SpecialCharTok{{-}} \FunctionTok{rollmean}\NormalTok{(baseDadosMensalAprox[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{],}\DecValTok{12}\NormalTok{)}
+\CommentTok{\# GAP}
+\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ baseDadosMensalAprox[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{baseDadosMensalAproxLimpa }\OtherTok{\textless{}{-}} \FunctionTok{merge.zoo}\NormalTok{(ibov\_dif,commoditi\_dif,desemprego\_dif,igp\_dif, M1}\FloatTok{.1}\NormalTok{, M1}\FloatTok{.2}\NormalTok{, M1}\FloatTok{.3}\NormalTok{, producao\_dif, juros\_log,RMM,ibov\_ontem,gap)}
+
+\FunctionTok{colnames}\NormalTok{(baseDadosMensalAproxLimpa) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{,}\StringTok{"commoditi\_dif"}\NormalTok{,}\StringTok{"desemprego\_dif"}\NormalTok{,}\StringTok{"igp\_dif"}\NormalTok{,}\StringTok{"Agreg\_Monetario1"}\NormalTok{,}\StringTok{"Agreg\_Monetario2"}\NormalTok{,}\StringTok{"Agreg\_Monetario3"}\NormalTok{,}
+                         \StringTok{"producao\_fisica\_industrial\_dif"}\NormalTok{,}\StringTok{"jurosEUA\_log"}\NormalTok{,}\StringTok{"RMM"}\NormalTok{,}\StringTok{"ibov\_ontem"}\NormalTok{,}\StringTok{"gap"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Correlacao
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(baseDadosMensalAproxLimpa))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                     IBOV_dif commoditi_dif desemprego_dif
+## IBOV_dif                        1.0000000000   -0.12536823  -0.0006254976
+## commoditi_dif                  -0.1253682322    1.00000000  -0.1191571473
+## desemprego_dif                 -0.0006254976   -0.11915715   1.0000000000
+## igp_dif                        -0.0268439507    0.27945957   0.0073082044
+## Agreg_Monetario1                0.1120274018    0.19386794  -0.6190209547
+## Agreg_Monetario2                0.0804594113    0.07368604  -0.1942690383
+## Agreg_Monetario3                0.1219127232    0.17254955  -0.5593157965
+## producao_fisica_industrial_dif  0.0048188957   -0.01095344   0.2207348959
+## jurosEUA_log                    0.0563994844   -0.09628773  -0.0735683246
+## RMM                            -0.1281589552   -0.03979091  -0.0626476981
+## ibov_ontem                      0.1060521074   -0.07099775  -0.0371972526
+## gap                            -0.1335677858   -0.04922061  -0.1759209318
+##                                     igp_dif Agreg_Monetario1 Agreg_Monetario2
+## IBOV_dif                       -0.026843951      0.112027402       0.08045941
+## commoditi_dif                   0.279459573      0.193867938       0.07368604
+## desemprego_dif                  0.007308204     -0.619020955      -0.19426904
+## igp_dif                         1.000000000      0.060349058       0.08685389
+## Agreg_Monetario1                0.060349058      1.000000000       0.34073211
+## Agreg_Monetario2                0.086853894      0.340732113       1.00000000
+## Agreg_Monetario3                0.073448146      0.917732790       0.66634867
+## producao_fisica_industrial_dif  0.001086623     -0.427980592      -0.03734617
+## jurosEUA_log                   -0.095046819      0.012268499       0.03463877
+## RMM                            -0.003155480     -0.040396190       0.06114774
+## ibov_ontem                     -0.078667719      0.008810398       0.07572848
+## gap                            -0.073231046     -0.006726992      -0.03178762
+##                                Agreg_Monetario3 producao_fisica_industrial_dif
+## IBOV_dif                            0.121912723                    0.004818896
+## commoditi_dif                       0.172549549                   -0.010953439
+## desemprego_dif                     -0.559315796                    0.220734896
+## igp_dif                             0.073448146                    0.001086623
+## Agreg_Monetario1                    0.917732790                   -0.427980592
+## Agreg_Monetario2                    0.666348673                   -0.037346170
+## Agreg_Monetario3                    1.000000000                   -0.361719891
+## producao_fisica_industrial_dif     -0.361719891                    1.000000000
+## jurosEUA_log                        0.020045898                    0.022449161
+## RMM                                -0.009075138                    0.090118586
+## ibov_ontem                          0.022713784                    0.145675758
+## gap                                -0.020259099                   -0.027203269
+##                                jurosEUA_log          RMM   ibov_ontem
+## IBOV_dif                         0.05639948 -0.128158955  0.106052107
+## commoditi_dif                   -0.09628773 -0.039790907 -0.070997748
+## desemprego_dif                  -0.07356832 -0.062647698 -0.037197253
+## igp_dif                         -0.09504682 -0.003155480 -0.078667719
+## Agreg_Monetario1                 0.01226850 -0.040396190  0.008810398
+## Agreg_Monetario2                 0.03463877  0.061147744  0.075728477
+## Agreg_Monetario3                 0.02004590 -0.009075138  0.022713784
+## producao_fisica_industrial_dif   0.02244916  0.090118586  0.145675758
+## jurosEUA_log                     1.00000000  0.288001688  0.112555568
+## RMM                              0.28800169  1.000000000  0.046137568
+## ibov_ontem                       0.11255557  0.046137568  1.000000000
+## gap                             -0.06637024  0.153340932 -0.098690586
+##                                         gap
+## IBOV_dif                       -0.133567786
+## commoditi_dif                  -0.049220610
+## desemprego_dif                 -0.175920932
+## igp_dif                        -0.073231046
+## Agreg_Monetario1               -0.006726992
+## Agreg_Monetario2               -0.031787622
+## Agreg_Monetario3               -0.020259099
+## producao_fisica_industrial_dif -0.027203269
+## jurosEUA_log                   -0.066370236
+## RMM                             0.153340932
+## ibov_ontem                     -0.098690586
+## gap                             1.000000000
+\end{verbatim}
+
+Modelo Generalista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelMensalAprox }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data=}\NormalTok{ baseDadosMensalAproxLimpa)}
+\FunctionTok{summary}\NormalTok{(modelMensalAprox)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ ., data = baseDadosMensalAproxLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.38441 -0.03370 -0.00287  0.04066  0.19816 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)                     0.007966   0.006386   1.247   0.2136  
+## commoditi_dif                  -0.286436   0.128496  -2.229   0.0268 *
+## desemprego_dif                  0.101042   0.108294   0.933   0.3518  
+## igp_dif                         0.055954   0.523438   0.107   0.9150  
+## Agreg_Monetario1                0.141042   0.720932   0.196   0.8451  
+## Agreg_Monetario2               -0.026520   0.251908  -0.105   0.9163  
+## Agreg_Monetario3                0.281511   0.946743   0.297   0.7665  
+## producao_fisica_industrial_dif  0.074238   0.076116   0.975   0.3305  
+## jurosEUA_log                    0.003235   0.003265   0.991   0.3229  
+## RMM                            -0.059065   0.029543  -1.999   0.0468 *
+## ibov_ontem                      0.074809   0.067069   1.115   0.2659  
+## gap                            -0.175399   0.137095  -1.279   0.2021  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06831 on 215 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.08721,    Adjusted R-squared:  0.04051 
+## F-statistic: 1.867 on 11 and 215 DF,  p-value: 0.04501
+\end{verbatim}
+
+Anova
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modelMensalAprox)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                 Df  Sum Sq   Mean Sq F value  Pr(>F)  
+## commoditi_dif                    1 0.01727 0.0172740  3.7021 0.05567 .
+## desemprego_dif                   1 0.00027 0.0002701  0.0579 0.81011  
+## igp_dif                          1 0.00009 0.0000932  0.0200 0.88776  
+## Agreg_Monetario1                 1 0.02932 0.0293155  6.2827 0.01293 *
+## Agreg_Monetario2                 1 0.00215 0.0021464  0.4600 0.49835  
+## Agreg_Monetario3                 1 0.00003 0.0000290  0.0062 0.93720  
+## producao_fisica_industrial_dif   1 0.00573 0.0057312  1.2283 0.26898  
+## jurosEUA_log                     1 0.00218 0.0021820  0.4676 0.49481  
+## RMM                              1 0.02374 0.0237418  5.0882 0.02510 *
+## ibov_ontem                       1 0.00743 0.0074272  1.5918 0.20844  
+## gap                              1 0.00764 0.0076376  1.6368 0.20214  
+## Residuals                      215 1.00320 0.0046661                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Um detalhe importante nesse modelo, pelo gap não ter se tornado
+significativo, ele se tornou um modelo mensal igual ao ultimo, por conta
+disso não vale a pena analisarmos novamente
+
+\hypertarget{modelo-semestral}{%
+\section{Modelo Semestral}\label{modelo-semestral}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{baseSemestral }\OtherTok{\textless{}{-}}\NormalTok{ baseDados}
+\NormalTok{baseSemestral }\OtherTok{\textless{}{-}}\NormalTok{ baseSemestral[}\FunctionTok{month}\NormalTok{(}\FunctionTok{index}\NormalTok{(baseSemestral)) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{,}\DecValTok{6}\NormalTok{)]}
+
+\CommentTok{\#A primeira diferença do logaritmo do retorno real da bolsa de valores de São Paulo (RSR);}
+\NormalTok{ibov\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\StringTok{"ibov"}\NormalTok{]))}
+
+\CommentTok{\#ibovespa de ontem}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_dif}
+\NormalTok{ibov\_ontem\_index }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(ibov\_ontem)}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}}\NormalTok{ ibov\_ontem}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{growth\_lag1 =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{lag}\NormalTok{(ibov\_ontem))}
+\NormalTok{ibov\_ontem }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(ibov\_ontem[,}\DecValTok{2}\NormalTok{],}\AttributeTok{order.by =}\NormalTok{ ibov\_ontem\_index)}
+
+\CommentTok{\#a primeira diferença do logaritmo dos preços das Commodities (COM);}
+\NormalTok{commoditi\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\DecValTok{5}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseSemestral)[}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Índice.de.Commodities"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo do desemprego: antiga Pesquisa Mensal do Emprego {-} PME/ IBGE{-}19(DES);}
+\NormalTok{desemprego\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\StringTok{"desemprego"}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do IGP (IGP);}
+\NormalTok{igp\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\StringTok{\textquotesingle{}1.IGPM\textquotesingle{}}\NormalTok{]))}
+
+\CommentTok{\#a primeira diferença do logaritmo do agregado monetário M1(M1)}
+\NormalTok{M1}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.2} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{M1}\FloatTok{.3} \OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\DecValTok{3}\NormalTok{]))}
+\FunctionTok{colnames}\NormalTok{(baseSemestral)[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Papel.moeda.em.circulação" "Reservas.bancárias"       
+## [3] "Base.monetária.restrita"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#a primeira diferença do logaritmo da produção física industrial dessazonalizada}
+\NormalTok{producao\_dif }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(}\FunctionTok{primeiradiferencalog}\NormalTok{(baseSemestral[,}\DecValTok{4}\NormalTok{]))}
+
+\CommentTok{\# o logaritmo da taxa de juros dos EUA (EUA).}
+\NormalTok{juros\_log }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(baseSemestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{])}
+
+\CommentTok{\#o Relative Market Money Rate, construída através da diferença da taxa de juros e a média móvel de 12 meses para trás (RMM);}
+\NormalTok{RMM }\OtherTok{\textless{}{-}}\NormalTok{ baseSemestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{] }\SpecialCharTok{{-}} \FunctionTok{rollmean}\NormalTok{(baseSemestral[,}\StringTok{\textquotesingle{}FedFunds\textquotesingle{}}\NormalTok{],}\DecValTok{12}\NormalTok{)}
+\CommentTok{\# GAP}
+\NormalTok{gap }\OtherTok{\textless{}{-}}\NormalTok{ baseSemestral[,}\StringTok{\textquotesingle{}gap\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{baseSemestralLimpa }\OtherTok{\textless{}{-}} \FunctionTok{merge.zoo}\NormalTok{(ibov\_dif,commoditi\_dif,desemprego\_dif,igp\_dif, M1}\FloatTok{.1}\NormalTok{, M1}\FloatTok{.2}\NormalTok{, M1}\FloatTok{.3}\NormalTok{, producao\_dif, juros\_log,RMM,ibov\_ontem,gap)}
+
+\FunctionTok{colnames}\NormalTok{(baseSemestralLimpa) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IBOV\_dif"}\NormalTok{,}\StringTok{"commoditi\_dif"}\NormalTok{,}\StringTok{"desemprego\_dif"}\NormalTok{,}\StringTok{"igp\_dif"}\NormalTok{,}\StringTok{"Agreg\_Monetario1"}\NormalTok{,}\StringTok{"Agreg\_Monetario2"}\NormalTok{,}\StringTok{"Agreg\_Monetario3"}\NormalTok{,}
+                         \StringTok{"producao\_fisica\_industrial\_dif"}\NormalTok{,}\StringTok{"jurosEUA\_log"}\NormalTok{,}\StringTok{"RMM"}\NormalTok{,}\StringTok{"ibov\_ontem"}\NormalTok{,}\StringTok{"gap"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Correlação
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(baseSemestralLimpa))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                   IBOV_dif commoditi_dif desemprego_dif
+## IBOV_dif                        1.00000000    0.06726289    -0.07770253
+## commoditi_dif                   0.06726289    1.00000000    -0.29957587
+## desemprego_dif                 -0.07770253   -0.29957587     1.00000000
+## igp_dif                        -0.23892292    0.35640258    -0.02417832
+## Agreg_Monetario1                0.18590492    0.30449766    -0.83272260
+## Agreg_Monetario2                0.59063636    0.28016408    -0.70610516
+## Agreg_Monetario3                0.29054137    0.32140549    -0.84343040
+## producao_fisica_industrial_dif  0.24366125   -0.25325916     0.59670112
+## jurosEUA_log                    0.41656697   -0.12997958    -0.07242125
+## RMM                             0.35479230    0.06742896    -0.07051774
+## ibov_ontem                     -0.20138855    0.02165950    -0.01497556
+## gap                            -0.12096321    0.04636297    -0.33950222
+##                                     igp_dif Agreg_Monetario1 Agreg_Monetario2
+## IBOV_dif                       -0.238922919       0.18590492       0.59063636
+## commoditi_dif                   0.356402577       0.30449766       0.28016408
+## desemprego_dif                 -0.024178316      -0.83272260      -0.70610516
+## igp_dif                         1.000000000       0.02488461      -0.03947508
+## Agreg_Monetario1                0.024884611       1.00000000       0.73580645
+## Agreg_Monetario2               -0.039475078       0.73580645       1.00000000
+## Agreg_Monetario3                0.009272404       0.98590917       0.83534260
+## producao_fisica_industrial_dif -0.080699479      -0.75764343      -0.35622559
+## jurosEUA_log                   -0.032944934       0.06761824       0.28168658
+## RMM                            -0.057067288       0.04714270       0.28894799
+## ibov_ontem                      0.049283977      -0.10396207       0.01636222
+## gap                             0.173678722       0.09645989       0.06595995
+##                                Agreg_Monetario3 producao_fisica_industrial_dif
+## IBOV_dif                            0.290541366                     0.24366125
+## commoditi_dif                       0.321405493                    -0.25325916
+## desemprego_dif                     -0.843430397                     0.59670112
+## igp_dif                             0.009272404                    -0.08069948
+## Agreg_Monetario1                    0.985909168                    -0.75764343
+## Agreg_Monetario2                    0.835342599                    -0.35622559
+## Agreg_Monetario3                    1.000000000                    -0.70976768
+## producao_fisica_industrial_dif     -0.709767685                     1.00000000
+## jurosEUA_log                        0.116425826                     0.11306247
+## RMM                                 0.114914978                     0.09322530
+## ibov_ontem                         -0.076830140                     0.10295510
+## gap                                 0.089919182                     0.13119217
+##                                jurosEUA_log         RMM  ibov_ontem         gap
+## IBOV_dif                         0.41656697  0.35479230 -0.20138855 -0.12096321
+## commoditi_dif                   -0.12997958  0.06742896  0.02165950  0.04636297
+## desemprego_dif                  -0.07242125 -0.07051774 -0.01497556 -0.33950222
+## igp_dif                         -0.03294493 -0.05706729  0.04928398  0.17367872
+## Agreg_Monetario1                 0.06761824  0.04714270 -0.10396207  0.09645989
+## Agreg_Monetario2                 0.28168658  0.28894799  0.01636222  0.06595995
+## Agreg_Monetario3                 0.11642583  0.11491498 -0.07683014  0.08991918
+## producao_fisica_industrial_dif   0.11306247  0.09322530  0.10295510  0.13119217
+## jurosEUA_log                     1.00000000  0.70865776  0.33352450 -0.14649913
+## RMM                              0.70865776  1.00000000  0.33777848  0.11616738
+## ibov_ontem                       0.33352450  0.33777848  1.00000000  0.13087360
+## gap                             -0.14649913  0.11616738  0.13087360  1.00000000
+\end{verbatim}
+
+Modelo generalista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral0 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data=}\NormalTok{ baseSemestralLimpa)}
+
+\FunctionTok{summary}\NormalTok{(modelSemestral0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ ., data = baseSemestralLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.15455 -0.05327 -0.02609  0.05157  0.15483 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)                     0.07911    0.04795   1.650  0.11731   
+## commoditi_dif                   0.25847    0.24946   1.036  0.31466   
+## desemprego_dif                  0.42511    0.19629   2.166  0.04485 * 
+## igp_dif                        -1.49359    0.92618  -1.613  0.12523   
+## Agreg_Monetario1               -5.14014    3.29861  -1.558  0.13759   
+## Agreg_Monetario2               -0.73312    1.12652  -0.651  0.52389   
+## Agreg_Monetario3                7.57932    4.50298   1.683  0.11061   
+## producao_fisica_industrial_dif  1.02960    0.37651   2.735  0.01412 * 
+## jurosEUA_log                    0.04874    0.02278   2.139  0.04720 * 
+## RMM                            -0.02331    0.03190  -0.731  0.47491   
+## ibov_ontem                     -0.33236    0.10961  -3.032  0.00752 **
+## gap                             0.24601    0.84223   0.292  0.77375   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.09553 on 17 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.8406, Adjusted R-squared:  0.7375 
+## F-statistic: 8.152 on 11 and 17 DF,  p-value: 8.307e-05
+\end{verbatim}
+
+Anova
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modelSemestral0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                Df  Sum Sq Mean Sq F value    Pr(>F)    
+## commoditi_dif                   1 0.00440 0.00440  0.4826  0.496615    
+## desemprego_dif                  1 0.00354 0.00354  0.3882  0.541526    
+## igp_dif                         1 0.07468 0.07468  8.1838  0.010826 *  
+## Agreg_Monetario1                1 0.04152 0.04152  4.5500  0.047790 *  
+## Agreg_Monetario2                1 0.47686 0.47686 52.2533 1.411e-06 ***
+## Agreg_Monetario3                1 0.00288 0.00288  0.3161  0.581321    
+## producao_fisica_industrial_dif  1 0.09772 0.09772 10.7074  0.004492 ** 
+## jurosEUA_log                    1 0.02392 0.02392  2.6208  0.123870    
+## RMM                             1 0.00868 0.00868  0.9511  0.343102    
+## ibov_ontem                      1 0.08340 0.08340  9.1388  0.007668 ** 
+## gap                             1 0.00078 0.00078  0.0853  0.773752    
+## Residuals                      17 0.15514 0.00913                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Modelo só com variaveis significantes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ igp\_dif }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario1 }\SpecialCharTok{+}\NormalTok{ Agreg\_Monetario2 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ ibov\_ontem,}
+                     \AttributeTok{data=}\NormalTok{baseSemestralLimpa)}
+
+\FunctionTok{summary}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ igp_dif + Agreg_Monetario1 + Agreg_Monetario2 + 
+##     producao_fisica_industrial_dif + ibov_ontem, data = baseSemestralLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.38358 -0.08358 -0.00613  0.09302  0.43959 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                     0.04692    0.04309   1.089 0.284325    
+## igp_dif                        -0.68830    0.80023  -0.860 0.396119    
+## Agreg_Monetario1                0.70273    0.29432   2.388 0.023033 *  
+## Agreg_Monetario2                0.40106    0.24153   1.661 0.106581    
+## producao_fisica_industrial_dif  1.33415    0.36394   3.666 0.000886 ***
+## ibov_ontem                     -0.20772    0.14380  -1.444 0.158324    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1638 on 32 degrees of freedom
+##   (2 observations deleted due to missingness)
+## Multiple R-squared:  0.3837, Adjusted R-squared:  0.2875 
+## F-statistic: 3.985 on 5 and 32 DF,  p-value: 0.006361
+\end{verbatim}
+
+Modelo só com variaveis significantes do anova
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ desemprego\_dif }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{+}\NormalTok{ jurosEUA\_log }\SpecialCharTok{+}\NormalTok{ ibov\_ontem,}
+                     \AttributeTok{data=}\NormalTok{baseSemestralLimpa)}
+\FunctionTok{summary}\NormalTok{(modelSemestral2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ desemprego_dif + producao_fisica_industrial_dif + 
+##     jurosEUA_log + ibov_ontem, data = baseSemestralLimpa)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.37691 -0.07095 -0.01853  0.06944  0.39316 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                     0.12930    0.03166   4.085 0.000265 ***
+## desemprego_dif                 -0.32608    0.16283  -2.003 0.053493 .  
+## producao_fisica_industrial_dif  0.85635    0.32949   2.599 0.013871 *  
+## jurosEUA_log                    0.06022    0.01823   3.304 0.002303 ** 
+## ibov_ontem                     -0.40901    0.14564  -2.808 0.008301 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1581 on 33 degrees of freedom
+##   (2 observations deleted due to missingness)
+## Multiple R-squared:  0.4079, Adjusted R-squared:  0.3362 
+## F-statistic: 5.684 on 4 and 33 DF,  p-value: 0.001356
+\end{verbatim}
+
+Modelo generalista sem alfa
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral0SemAlfa }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{data=}\NormalTok{ baseSemestralLimpa)}
+
+\FunctionTok{summary}\NormalTok{(modelSemestral0SemAlfa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ . - 1, data = baseSemestralLimpa)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.131502 -0.044017  0.007865  0.064900  0.161701 
+## 
+## Coefficients:
+##                                 Estimate Std. Error t value Pr(>|t|)    
+## commoditi_dif                   0.097568   0.240345   0.406 0.689566    
+## desemprego_dif                  0.393132   0.204465   1.923 0.070483 .  
+## igp_dif                        -0.442879   0.703949  -0.629 0.537164    
+## Agreg_Monetario1               -5.247318   3.452151  -1.520 0.145878    
+## Agreg_Monetario2               -0.988690   1.167983  -0.846 0.408391    
+## Agreg_Monetario3                8.162295   4.698955   1.737 0.099461 .  
+## producao_fisica_industrial_dif  1.359145   0.334092   4.068 0.000722 ***
+## jurosEUA_log                    0.026793   0.019359   1.384 0.183284    
+## RMM                             0.001364   0.029495   0.046 0.963633    
+## ibov_ontem                     -0.288085   0.111240  -2.590 0.018493 *  
+## gap                            -0.478379   0.752351  -0.636 0.532879    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1 on 18 degrees of freedom
+##   (11 observations deleted due to missingness)
+## Multiple R-squared:  0.8275, Adjusted R-squared:  0.7221 
+## F-statistic: 7.851 on 11 and 18 DF,  p-value: 7.71e-05
+\end{verbatim}
+
+Comparação
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(modelSemestral0,modelSemestral0SemAlfa,modelSemestral,modelSemestral2,}\AttributeTok{type=}\StringTok{"text"}\NormalTok{,}\AttributeTok{title=}\StringTok{"Comparando Modelos Semestrais"}\NormalTok{,}
+                                 \AttributeTok{column.labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Modelo 0"}\NormalTok{,}\StringTok{"Modelo 0 Sem Alfa"}\NormalTok{,}\StringTok{"Modelo pelo Anova"}\NormalTok{,}\StringTok{"Modelo Var. Significativas"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Comparando Modelos Semestrais
+## =============================================================================================================================
+##                                                                     Dependent variable:                                      
+##                                ----------------------------------------------------------------------------------------------
+##                                                                           IBOV_dif                                           
+##                                       Modelo 0          Modelo 0 Sem Alfa      Modelo pelo Anova   Modelo Var. Significativas
+##                                         (1)                    (2)                    (3)                     (4)            
+## -----------------------------------------------------------------------------------------------------------------------------
+## commoditi_dif                          0.258                  0.098                                                          
+##                                       (0.249)                (0.240)                                                         
+##                                                                                                                              
+## desemprego_dif                        0.425**                 0.393*                                        -0.326*          
+##                                       (0.196)                (0.204)                                        (0.163)          
+##                                                                                                                              
+## igp_dif                                -1.494                 -0.443                -0.688                                   
+##                                       (0.926)                (0.704)                (0.800)                                  
+##                                                                                                                              
+## Agreg_Monetario1                       -5.140                 -5.247                0.703**                                  
+##                                       (3.299)                (3.452)                (0.294)                                  
+##                                                                                                                              
+## Agreg_Monetario2                       -0.733                 -0.989                 0.401                                   
+##                                       (1.127)                (1.168)                (0.242)                                  
+##                                                                                                                              
+## Agreg_Monetario3                       7.579                  8.162*                                                         
+##                                       (4.503)                (4.699)                                                         
+##                                                                                                                              
+## producao_fisica_industrial_dif        1.030**                1.359***              1.334***                 0.856**          
+##                                       (0.377)                (0.334)                (0.364)                 (0.329)          
+##                                                                                                                              
+## jurosEUA_log                          0.049**                 0.027                                         0.060***         
+##                                       (0.023)                (0.019)                                        (0.018)          
+##                                                                                                                              
+## RMM                                    -0.023                 0.001                                                          
+##                                       (0.032)                (0.029)                                                         
+##                                                                                                                              
+## ibov_ontem                           -0.332***               -0.288**               -0.208                 -0.409***         
+##                                       (0.110)                (0.111)                (0.144)                 (0.146)          
+##                                                                                                                              
+## gap                                    0.246                  -0.478                                                         
+##                                       (0.842)                (0.752)                                                         
+##                                                                                                                              
+## Constant                               0.079                                         0.047                  0.129***         
+##                                       (0.048)                                       (0.043)                 (0.032)          
+##                                                                                                                              
+## -----------------------------------------------------------------------------------------------------------------------------
+## Observations                             29                     29                    38                       38            
+## R2                                     0.841                  0.828                  0.384                   0.408           
+## Adjusted R2                            0.738                  0.722                  0.287                   0.336           
+## Residual Std. Error               0.096 (df = 17)        0.100 (df = 18)        0.164 (df = 32)         0.158 (df = 33)      
+## F Statistic                    8.152*** (df = 11; 17) 7.851*** (df = 11; 18) 3.985*** (df = 5; 32)   5.684*** (df = 4; 33)   
+## =============================================================================================================================
+## Note:                                                                                             *p<0.1; **p<0.05; ***p<0.01
+\end{verbatim}
+
+Decidi não alterar o modelo e ir com um semestral sem alfa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral }\OtherTok{\textless{}{-}}\NormalTok{ modelSemestral0SemAlfa}
+\end{Highlighting}
+\end{Shaded}
+
+Teste reset - Erros normalizados com media 0
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reset}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  RESET test
+## 
+## data:  modelSemestral
+## RESET = 0.43766, df1 = 2, df2 = 16, p-value = 0.653
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in vif.default(modelSemestral): No intercept: vifs may not be sensible.
+\end{verbatim}
+
+\begin{verbatim}
+##                  commoditi_dif                 desemprego_dif 
+##                       1.408111                       5.487461 
+##                        igp_dif               Agreg_Monetario1 
+##                       1.858877                     737.034187 
+##               Agreg_Monetario2               Agreg_Monetario3 
+##                      65.521930                    1153.919452 
+## producao_fisica_industrial_dif                   jurosEUA_log 
+##                       3.619480                       3.008738 
+##                            RMM                     ibov_ontem 
+##                       2.833518                       1.250356 
+##                            gap 
+##                       1.889118
+\end{verbatim}
+
+Criando um modelo tentando reduzir o vif, bem sucedido, sacrifiquei R2
+para ganhar significancia.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestralSemInflacaoDeVariavel }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario3 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseSemestralLimpa))}
+\FunctionTok{summary}\NormalTok{(modelSemestralSemInflacaoDeVariavel)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif - 
+##     1, data = na.omit(baseSemestralLimpa))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.28175 -0.08161 -0.02895  0.08417  0.27009 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## Agreg_Monetario3                 1.3078     0.2535   5.159 1.99e-05 ***
+## producao_fisica_industrial_dif   1.5212     0.3218   4.726 6.35e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1359 on 27 degrees of freedom
+## Multiple R-squared:  0.5223, Adjusted R-squared:  0.4869 
+## F-statistic: 14.76 on 2 and 27 DF,  p-value: 4.661e-05
+\end{verbatim}
+
+Rodando para ver se corrigi o VIF
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelSemestral }\OtherTok{\textless{}{-}}\NormalTok{ modelSemestralSemInflacaoDeVariavel}
+\FunctionTok{vif}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in vif.default(modelSemestral): No intercept: vifs may not be sensible.
+\end{verbatim}
+
+\begin{verbatim}
+##               Agreg_Monetario3 producao_fisica_industrial_dif 
+##                       1.819238                       1.819238
+\end{verbatim}
+
+Um anova.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: IBOV_dif
+##                                Df  Sum Sq Mean Sq F value    Pr(>F)    
+## Agreg_Monetario3                1 0.13260 0.13260  7.1825   0.01239 *  
+## producao_fisica_industrial_dif  1 0.41242 0.41242 22.3390 6.354e-05 ***
+## Residuals                      27 0.49848 0.01846                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Graficos a serem analisados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-77-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Elementos da diagonal de H:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ps\_hat }\OtherTok{\textless{}{-}} \FunctionTok{hatvalues}\NormalTok{(modelSemestral)}
+\FunctionTok{plot}\NormalTok{(ps\_hat)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{mean}\NormalTok{(ps\_hat), }\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
+\NormalTok{id }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(ps\_hat}\SpecialCharTok{\textgreater{}}\DecValTok{3} \SpecialCharTok{*} \FunctionTok{mean}\NormalTok{(ps\_hat))}
+\FunctionTok{text}\NormalTok{(id, ps\_hat[id], }\FunctionTok{index}\NormalTok{(baseSemestralLimpa)[id], }\AttributeTok{pos=}\DecValTok{1}\NormalTok{, }\AttributeTok{xpd=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-78-1.pdf}
+
+Testes de diagnóstico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{influence.measures}\NormalTok{(modelSemestral))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Potentially influential observations of
+##   lm(formula = IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif -      1, data = na.omit(baseSemestralLimpa)) :
+## 
+##            dfb.A_M3 dfb.p___ dffit   cov.r   cook.d  hat    
+## 2004-12-01 -0.11    -0.07    -0.11    1.24_*  0.01    0.14  
+## 2006-12-01 -0.12    -0.06    -0.12    1.24_*  0.01    0.14  
+## 2008-12-01  0.71     1.58_*  -1.64_*  0.90    1.10_*  0.27_*
+## 2009-12-01 -0.05    -0.04    -0.05    1.31_*  0.00    0.17
+\end{verbatim}
+
+teste de Jarque-Bera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(modelSemestral)}
+\FunctionTok{jarqueberaTest}\NormalTok{(e)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Title:
+##  Jarque - Bera Normalality Test
+## 
+## Test Results:
+##   STATISTIC:
+##     X-squared: 0.2198
+##   P VALUE:
+##     Asymptotic p Value: 0.8959 
+## 
+## Description:
+##  Thu Nov 24 22:43:46 2022 by user: diogo
+\end{verbatim}
+
+Teste de Breusch-Pagan:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{bptest}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  studentized Breusch-Pagan test
+## 
+## data:  modelSemestral
+## BP = 7.4162, df = 1, p-value = 0.006464
+\end{verbatim}
+
+Teste de White
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{white}\NormalTok{(modelSemestral, }\AttributeTok{interactions =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Intercept included in auxiliary design matrix
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   statistic p.value parameter method       alternative
+##       <dbl>   <dbl>     <dbl> <chr>        <chr>      
+## 1      12.4  0.0293         5 White's Test greater
+\end{verbatim}
+
+Teste de Goldfeld e Quandt
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gqtest}\NormalTok{(modelSemestral, }\AttributeTok{data=}\NormalTok{baseSemestralLimpa)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Goldfeld-Quandt test
+## 
+## data:  modelSemestral
+## GQ = 1.5391, df1 = 13, df2 = 12, p-value = 0.2315
+## alternative hypothesis: variance increases from segment 1 to 2
+\end{verbatim}
+
+Erros padrão de White
+
+Matriz de covariância de White:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vcovHC}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                Agreg_Monetario3 producao_fisica_industrial_dif
+## Agreg_Monetario3                     0.04791295                     0.09221479
+## producao_fisica_industrial_dif       0.09221479                     0.28132155
+\end{verbatim}
+
+Ver correlacao serial
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(}\FunctionTok{na.omit}\NormalTok{(modelSemestral}\SpecialCharTok{$}\NormalTok{residuals), }\AttributeTok{plot =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{notebook_files/figure-latex/unnamed-chunk-85-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dwtest}\NormalTok{(modelSemestral)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Durbin-Watson test
+## 
+## data:  modelSemestral
+## DW = 2.4118, p-value = 0.9328
+## alternative hypothesis: true autocorrelation is greater than 0
+\end{verbatim}
+
+Dummys: Governos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseSemestralLimpa)}
+\FunctionTok{length}\NormalTok{(indexBase)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 40
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase),}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Governo\_Esquerda"}\NormalTok{,}\StringTok{"Governo\_Direita"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2002{-}02{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Esquerda"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2016{-}08{-}31"}\NormalTok{),}\StringTok{"Governo\_Direita"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaGoverno }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseSemestralLimpa,dummys)}
+\NormalTok{modeloGovernoGap }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario3 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif  }\SpecialCharTok{{-}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Governo\_Esquerda }\SpecialCharTok{+}\NormalTok{ Governo\_Direita }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaGoverno))}
+\FunctionTok{summary}\NormalTok{(modeloGovernoGap)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif - 
+##     1 + Governo_Esquerda + Governo_Direita - 1, data = na.omit(baseLimpaGoverno))
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.232480 -0.067526 -0.002859  0.109720  0.197158 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## Agreg_Monetario3                1.42317    0.28209   5.045 3.32e-05 ***
+## producao_fisica_industrial_dif  1.65011    0.33414   4.938 4.37e-05 ***
+## Governo_Esquerda               -0.03571    0.03067  -1.164    0.255    
+## Governo_Direita                 0.07929    0.06009   1.320    0.199    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1327 on 25 degrees of freedom
+## Multiple R-squared:  0.5778, Adjusted R-squared:  0.5103 
+## F-statistic: 8.554 on 4 and 25 DF,  p-value: 0.0001714
+\end{verbatim}
+
+Dummy pandemia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indexBase }\OtherTok{\textless{}{-}} \FunctionTok{index}\NormalTok{(baseSemestralLimpa)}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow =} \FunctionTok{length}\NormalTok{(indexBase))}
+\FunctionTok{rownames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}}\NormalTok{ indexBase}
+\FunctionTok{colnames}\NormalTok{(dummys) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pandemia"}\NormalTok{)}
+\NormalTok{dummys[}\FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textgreater{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2020{-}03{-}01"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{rownames}\NormalTok{(dummys) }\SpecialCharTok{\textless{}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2022{-}1{-}01"}\NormalTok{),}\StringTok{"Pandemia"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{dummys }\OtherTok{\textless{}{-}} \FunctionTok{zoo}\NormalTok{(dummys,}\AttributeTok{order.by =} \FunctionTok{rownames}\NormalTok{(dummys))}
+\NormalTok{baseLimpaPandemia }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(baseSemestralLimpa,dummys)}
+\NormalTok{modeloPandemia }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(IBOV\_dif }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Agreg\_Monetario3 }\SpecialCharTok{+}\NormalTok{ producao\_fisica\_industrial\_dif  }\SpecialCharTok{{-}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ Pandemia}
+\NormalTok{  ,}\AttributeTok{data=}\FunctionTok{na.omit}\NormalTok{(baseLimpaPandemia))}
+\FunctionTok{summary}\NormalTok{(modeloPandemia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif - 
+##     1 + Pandemia, data = na.omit(baseLimpaPandemia))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.28175 -0.08161 -0.02895  0.08417  0.27009 
+## 
+## Coefficients: (1 not defined because of singularities)
+##                                Estimate Std. Error t value Pr(>|t|)    
+## Agreg_Monetario3                 1.3078     0.2535   5.159 1.99e-05 ***
+## producao_fisica_industrial_dif   1.5212     0.3218   4.726 6.35e-05 ***
+## Pandemia                             NA         NA      NA       NA    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1359 on 27 degrees of freedom
+## Multiple R-squared:  0.5223, Adjusted R-squared:  0.4869 
+## F-statistic: 14.76 on 2 and 27 DF,  p-value: 4.661e-05
+\end{verbatim}
+
+\end{document}
