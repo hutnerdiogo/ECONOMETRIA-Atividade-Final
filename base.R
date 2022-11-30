@@ -126,17 +126,17 @@ colnames(baseLimpa) <- c("IBOV_dif","commoditi_dif","desemprego_dif","igp_dif","
 cor_table <- cor(na.omit(baseLimpa))
 
 #Plotando o ibov e analisando ele:
-vetor <- as.vector(baseDadosMensalFillLimpa[,'IBOV_dif'])
-indexa <- index(baseDadosMensalFillLimpa[,'IBOV_dif'])
-plot(as.Date(indexa),vetor,type="b")
-par(mfrow=c(1,1))
-abline(h=0,col="red")
-abline(h=mean(na.omit(vetor)),col="black")
-legend(x = "topright",         # Position
-       legend = c("Retorno", "Media","0"), # Legend texts
-       lty = c(6, 1 , 1),          # Line types
-       col = c("Black", "Black","Red"),          # Line colors
-       lwd = 4)
+#vetor <- as.vector(baseDadosMensalFillLimpa[,'IBOV_dif'])
+#indexa <- index(baseDadosMensalFillLimpa[,'IBOV_dif'])
+#plot(as.Date(indexa),vetor,type="b")
+#par(mfrow=c(1,1))
+#abline(h=0,col="red")
+#abline(h=mean(na.omit(vetor)),col="black")
+#legend(x = "topright",         # Position
+#       legend = c("Retorno", "Media","0"), # Legend texts
+#       lty = c(6, 1 , 1),          # Line types
+#       col = c("Black", "Black","Red"),          # Line colors
+#       lwd = 4)
 
 
 
@@ -168,11 +168,12 @@ abline(h=0,col="red")
 ## Melhor regressão modelo maximizando R2 ajustado
 melhor <- todas_regressoes[which.max(todas_regressoes[,"vetor_R2_Adj"]),]
 variaveis <- variaveis_possiveis[as.logical(as.vector(as.matrix(melhor)))]
-variaveis <- variaveis[-7]
+variaveis <- na.omit(variaveis)
 frm <- as.formula(paste("IBOV_dif","~", paste(variaveis,collapse = " + ")  ,sep=""))
 reg <- lm(frm, data=baseLimpa)
 summary(reg)
-
+regSimul <- reg
+summary(regSimul)
 ## Falhando com o forward / backward-stepping
 baseLimpafwbw <- coredata(baseLimpa)
 response <- baseLimpafwbw[,"IBOV_dif"]
@@ -185,7 +186,7 @@ summary(regfwbw)
 ## Misturar os dois
 regfwbw2 <- lm(IBOV_dif ~ desemprego_dif + igp_dif + Agreg_Monetario1 + producao_fisica_industrial_dif,data=baseLimpa)
 summary(regfwbw2)
-#Não gostei, o primeiro vai ser o modelo
+#nao gostei, o primeiro vai ser o modelo
 
 regGapMensal <- reg
 summary(regGapMensal)
@@ -313,16 +314,16 @@ modeloOutliers <- lm(IBOV_dif ~ Agreg_Monetario1 + producao_fisica_industrial_di
   + baseLimpaOutliers[,"2008-12-01"] - 1 ,data=baseLimpaOutliers)
 summary(modeloOutliers)
 
-output <- capture.output(stargazer(model0TodosAgregados,regGapMensal,modeloOutliers,type="html",
-                                   column.labels = c("Modelo Geral","Modelo Restrito","Modelo Restrito Sem Outliers"),
-                                   title = "GAP Trimestral"))
+output <- capture.output(stargazer(model0TodosAgregados,regSimul,regfwbw,regGapMensal,modeloGoverno,modeloPandemia,modeloOutliers,type="html",
+                                   column.labels = c("Modelo Geral","Modelo Simulacao","Modelo forward / backward-stepping ","Modelo Restrito","Modelo Dummys Governo","Modelo Dummy Pandemia","Modelo Restrito Sem Outliers"),
+                                   title = "Trimestral"))
 cat(output, file="output.html", append=TRUE)
 
 #---------------------------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------------------------#
 ##### Gap Mensal #####
-## Reconstruindo a base de dados para GAP não mensal
+## Reconstruindo a base de dados para GAP nao mensal
 baseDadosMensalFill <- baseDados
 baseDadosMensalFill <- na.locf(baseDadosMensalFill)
 baseDadosMensalFill <- na.omit(baseDadosMensalFill)
@@ -378,14 +379,11 @@ cor(na.omit(baseDadosMensalFillLimpa))
 
 modelMensalSimples <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1,data=baseDadosMensalFillLimpa)
 summary(modelMensalSimples)
+modelMensalSimples2 <- modelMensalSimples
 
 modelMensalSimplesSemAlfa <- lm(IBOV_dif ~ Agreg_Monetario1 + commoditi_dif + RMM  - 1 ,data=baseDadosMensalFillLimpa)
 summary(modelMensalSimplesSemAlfa)
 
-fileConn<-file("stargazer2.html")
-star <- capture.output(stargazer(modelMensalSimples,modelMensalSimplesSemAlfa,type="html",title="Comparando Modelo com e sem Alfa gap mensal"))
-writeLines(star, fileConn)
-close(fileConn)
 
 modelMensalSimples <- modelMensalSimplesSemAlfa
 
@@ -494,11 +492,14 @@ modeloSemOutliers <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 1 + 
 summary(modeloSemOutliers)
 
 fileConn<-file("stargazer3.html")
-star <- capture.output(stargazer(modelFillTodos,modelMensalSimples,modeloSemOutliers, type="html",column.labels = c("Modelo Completo",
-                                                                                             "Modelo Simples",
-                                                                                             "Modelo Simples Sem Outliers")))
+star <- capture.output(stargazer(modelFillTodos,modelMensalSimples2,modelMensalSimples,modeloPandemia,modeloGovernoGap,modeloSemOutliers,type="html",
+                                 title = "Modelo Mensal",
+                                 column.labels = c("Modelo Completo", "Modelo Simples Com Alfa", "Modelo Simples Sem Alfa","Modelo Pandemia","Modelo Governo","Modelo Simples Sem Outliers"),
+                                 omit= c(14,16:19)),outliers)
 writeLines(star, fileConn)
 close(fileConn)
+
+
 
 #---------------------------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------------------------#
@@ -623,7 +624,7 @@ anova(modelSemestral0)
 
 modelSemestral <- lm(IBOV_dif ~ igp_dif + Agreg_Monetario1 + Agreg_Monetario2 + producao_fisica_industrial_dif + ibov_ontem,
                      data=baseSemestralLimpa)
-
+modelSemestral1 <- modelSemestral
 summary(modelSemestral)
 
 modelSemestral2 <- lm(IBOV_dif ~ desemprego_dif + producao_fisica_industrial_dif + jurosEUA_log + ibov_ontem,
@@ -717,14 +718,56 @@ modeloGovernoGap <- lm(IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_
   ,data=na.omit(baseLimpaGoverno))
 summary(modeloGovernoGap)
 
-## Dummy pandemia
+
+## Outliers:
 indexBase <- index(baseSemestralLimpa)
-dummys <- matrix(0,nrow = length(indexBase))
+outliers <- c("2003-12-01", "2008-12-01", "2009-06-01", "2020-06-01", "2020-12-01")
+dummys <- matrix(0,nrow=length(indexBase),ncol=length(outliers))
+colnames(dummys) <- outliers
 rownames(dummys) <- indexBase
-colnames(dummys) <- c("Pandemia")
-dummys[rownames(dummys) > as.Date("2020-03-01") & rownames(dummys) < as.Date("2022-1-01"),"Pandemia"] <- 1
-dummys <- zoo(dummys,order.by = rownames(dummys))
-baseLimpaPandemia <- cbind(baseSemestralLimpa,dummys)
-modeloPandemia <- lm(IBOV_dif ~ Agreg_Monetario3 + producao_fisica_industrial_dif  - 1 + Pandemia
-  ,data=na.omit(baseLimpaPandemia))
-summary(modeloPandemia)
+for (i in outliers){
+  dummys[rownames(dummys) == i,i] <- 1
+}
+baseSemestralFillSemOutliers <- cbind(baseSemestralLimpa,dummys)
+paste(outliers,collapse = ' + ')
+modeloSemOutliers <- lm(IBOV_dif ~ commoditi_dif + RMM + Agreg_Monetario1 - 1 + baseSemestralFillSemOutliers[,"2003-12-01"] +
+  baseSemestralFillSemOutliers[,"2008-12-01"] + baseSemestralFillSemOutliers[,"2009-06-01"] +
+  baseSemestralFillSemOutliers[,"2020-06-01"] + baseSemestralFillSemOutliers[,"2020-12-01"]  ,data=baseSemestralFillSemOutliers)
+summary(modeloSemOutliers)
+
+
+
+fileConn<-file("stargazer5.html")
+star <- capture.output(stargazer(modelSemestral0,modelSemestral1,
+                                 modelSemestral2,modelSemestralSemInflacaoDeVariavel,
+                                 modeloGovernoGap,modeloSemOutliers,
+                                 type="html",title="Modelos Semestrais",
+                                 column.labels = c("Modelo Geral","Modelo pelo Anova",
+                                                   "Modelo Var. Significativas","Modelo Reduzindo FIV",
+                                                   "Dummy Governo","Outliers"),
+                                 omit=c(10:12)),outliers)
+writeLines(star, fileConn)
+close(fileConn)
+
+#Resumindo, se p valor < 5 = hipotese alternativa, se p valor > 5 = Hipotese Nula
+
+montar_tabela <- function(modelo){
+  header <- c("Nome Teste","P Valor", "H0","H1","Resultado")
+  treset <- c("Reset",reset(modelo)$p.value,"nao tem problema de especificacao","tem problema de especificacao", if(reset(modelo)$p.value > 0.05) "H0" else "H1")
+  tjbp <- as.vector(attr(jarqueberaTest(resid(modelo)),"test")$p.value)
+  tjb <- c("Teste de Jarque-Bera",tjbp," modelo segue uma distribuicao normal","nao pertence a uma distribuicao normal", if(tjbp > 0.05) "H0" else "H1")
+  tbp <- c("Teste de Breusch-Pagan",bptest(modelo)$p.value,"as variancias do erro sao constantes","as variancias do erro nao sao constantes", if(bptest(modelo)$p.value > 0.05) "H0" else "H1")
+  twhite <- c("Teste de White",white(modelo)$p.value,"as variancias do erro sao constantes","as variancias do erro nao sao constantes", if(white(modelo)$p.value > 0.05) "H0" else "H1")
+  tdurwat <- c("Teste de Durbin-Watson",dwtest(modelo)$p.value,"erros nao sao correlacionados","erros sao correlacionados", if(dwtest(modelo)$p.value > 0.05) "H0" else "H1")
+  output <- rbind(treset, tjb, tbp, twhite, tdurwat)
+  colnames(output) <- header
+  rownames(output) <- index(output)
+  return(output)
+}
+stargazer(montar_tabela(modelSemestral),type="text")
+
+stargazer(montar_tabela(modelMensalSimples),type="text")
+
+stargazer(montar_tabela(regGapMensal),type="text")
+
+
